@@ -1,10 +1,10 @@
-package com.gavintravelling.demo;
+package com.gavintravelling;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class AppTests {
 
     @Test
     void contextLoads() {
