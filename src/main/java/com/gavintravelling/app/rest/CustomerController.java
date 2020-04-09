@@ -28,9 +28,9 @@ public class CustomerController {
     return cmrRepository.findById(id);
     }
 
-    @PostMapping
-    public Customer createCustomer(@RequestBody Customer userToBeCreated){
-     return cmrRepository.save(userToBeCreated);
+    @PostMapping(path = "/post", consumes = "application/json", produces = "application/json")
+    public Customer createCustomer(@RequestBody Customer customer){
+     return cmrRepository.save(customer);
     }
 
 
