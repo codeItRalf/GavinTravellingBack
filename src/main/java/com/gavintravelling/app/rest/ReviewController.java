@@ -19,28 +19,28 @@ public class ReviewController {
 
 
     @GetMapping
-    public Iterable<Review> getAllCustomers(){
+    public Iterable<Review> getAllReviews(){
             return reviewRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Review> getCustomerById(@PathVariable long id){
+    public Optional<Review> getReviewById(@PathVariable long id){
     return reviewRepository.findById(id);
     }
 
     @PostMapping
-    public Review createCustomer(@RequestBody Review review){
+    public Review createReview(@RequestBody Review review){
      return reviewRepository.save(review);
     }
 
 
     @DeleteMapping("/all")
-    public void deleteAllCustomers(@PathVariable long id){
+    public void deleteAllReviews(@PathVariable long id){
       reviewRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomerById(@PathVariable long id){
+    public void deleteReviewById(@PathVariable long id){
       reviewRepository.deleteById(id);
     }
 

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/Hotel")
+@RequestMapping("/hotel")
 public class HotelController {
 
     @Autowired
@@ -20,28 +20,28 @@ public class HotelController {
 
 
     @GetMapping
-    public Iterable<Hotel> getAllCustomers(){
+    public Iterable<Hotel> getAllHotels(){
             return hotelRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Hotel> getCustomerById(@PathVariable long id){
+    public Optional<Hotel> getHotelById(@PathVariable long id){
     return hotelRepository.findById(id);
     }
 
     @PostMapping
-    public Hotel createCustomer(@RequestBody Hotel hotel){
+    public Hotel createHotel(@RequestBody Hotel hotel){
      return hotelRepository.save(hotel);
     }
 
 
     @DeleteMapping("/all")
-    public void deleteAllCustomers(@PathVariable long id){
+    public void deleteAllHotels(@PathVariable long id){
       hotelRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomerById(@PathVariable long id){
+    public void deleteHotelById(@PathVariable long id){
       hotelRepository.deleteById(id);
     }
 

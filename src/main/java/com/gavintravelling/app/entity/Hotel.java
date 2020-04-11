@@ -1,6 +1,7 @@
 package com.gavintravelling.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ public class Hotel {
     private  @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY ) Long id;
 
     private String name;
-    private int star;
+    private int stars;
     private String picture;
     private String phone;
     private String eMail;
@@ -33,7 +34,8 @@ public class Hotel {
 
      }
 
-   @ManyToOne(cascade = CascadeType.ALL)
+   @OneToOne(cascade = CascadeType.ALL)
+   @JsonIgnore
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 

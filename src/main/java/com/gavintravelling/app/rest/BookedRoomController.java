@@ -16,33 +16,31 @@ public class BookedRoomController {
     @Autowired
     private BookedRoomRepository bookedRoomRepository;
 
-    public BookedRoomController() {
-    }
 
     @GetMapping
-    public Iterable<BookedRoom> getAllCustomers(){
+    public Iterable<BookedRoom> getAllBookedRooms(){
             return bookedRoomRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<BookedRoom> getCustomerById(@PathVariable BookedRoomsId id){
-    return bookedRoomRepository.findById(id);
+    @GetMapping("/{bookingId}/{roomId}")
+    public Optional<BookedRoom> getBookedRoomById(@PathVariable Long bookingId, @PathVariable Long roomId){
+    return bookedRoomRepository.findById(new BookedRoomsId(bookingId, roomId));
     }
 
     @PostMapping
-    public BookedRoom createCustomer(@RequestBody BookedRoom bookedRoom){
+    public BookedRoom createBookedRoom(@RequestBody BookedRoom bookedRoom){
      return bookedRoomRepository.save(bookedRoom);
     }
 
 
     @DeleteMapping("/all")
-    public void deleteAllCustomers(){
+    public void deleteAllBookedRooms(){
       bookedRoomRepository.deleteAll();
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteCustomerById(@PathVariable BookedRoomsId id){
-      bookedRoomRepository.deleteById(id);
+    @DeleteMapping("/{bookingId}/{roomId}")
+    public void deleteBookedRoomById(@PathVariable Long bookingId, @PathVariable Long roomId){
+      bookedRoomRepository.deleteById(new BookedRoomsId(bookingId, roomId));
     }
 
 }

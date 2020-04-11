@@ -20,28 +20,28 @@ public class BookingController {
 
 
     @GetMapping
-    public Iterable<Booking> getAllCustomers(){
+    public Iterable<Booking> getAllBookings(){
             return bookingRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Booking> getCustomerById(@PathVariable long id){
+    public Optional<Booking> getBookingsById(@PathVariable long id){
     return bookingRepository.findById(id);
     }
 
     @PostMapping
-    public Booking createCustomer(@RequestBody Booking booking){
+    public Booking createBooking(@RequestBody Booking booking){
      return bookingRepository.save(booking);
     }
 
 
     @DeleteMapping("/all")
-    public void deleteAllCustomers(@PathVariable long id){
+    public void deleteAllBookings(@PathVariable long id){
       bookingRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomerById(@PathVariable long id){
+    public void deleteBookingById(@PathVariable long id){
       bookingRepository.deleteById(id);
     }
 

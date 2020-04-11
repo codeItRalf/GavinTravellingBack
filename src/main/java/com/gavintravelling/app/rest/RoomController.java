@@ -20,28 +20,28 @@ public class RoomController {
 
 
     @GetMapping
-    public Iterable<Room> getAllCustomers(){
+    public Iterable<Room> getAllRooms(){
             return roomRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Room> getCustomerById(@PathVariable long id){
+    public Optional<Room> getRoomById(@PathVariable long id){
     return roomRepository.findById(id);
     }
 
     @PostMapping
-    public Room createCustomer(@RequestBody Room room){
+    public Room createRoom(@RequestBody Room room){
      return roomRepository.save(room);
     }
 
 
     @DeleteMapping("/all")
-    public void deleteAllCustomers(@PathVariable long id){
+    public void deleteAllRooms(@PathVariable long id){
       roomRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomerById(@PathVariable long id){
+    public void deleteRoomById(@PathVariable long id){
       roomRepository.deleteById(id);
     }
 

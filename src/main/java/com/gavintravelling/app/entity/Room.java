@@ -1,9 +1,11 @@
 package com.gavintravelling.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -14,10 +16,15 @@ public class Room {
 
     @Column(name = "rooms_number")
     private int roomNumber;
+//
+//    @ManyToMany(mappedBy = "bookedRooms")
+//    private Set<Booking> bookings;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "room_type_id", referencedColumnName = "id")
-    private RoomType roomType;
+    @OneToMany(mappedBy = "room")
+    @JsonIgnore
+    private Set<BookedRoom> rooms;
+
+
 
     public Room(){
 

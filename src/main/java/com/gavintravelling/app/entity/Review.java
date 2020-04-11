@@ -1,6 +1,7 @@
 package com.gavintravelling.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,7 +20,8 @@ public class Review {
 
      }
      @OneToOne(cascade = CascadeType.ALL)
+     @JsonIgnore
      @JoinColumn(name = "booking_id", referencedColumnName = "id")
-    private Booking booking;
+     private Booking booking;
 
 }

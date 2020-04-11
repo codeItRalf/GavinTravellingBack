@@ -20,28 +20,28 @@ public class CityController {
 
 
     @GetMapping
-    public Iterable<City> getAllCustomers(){
+    public Iterable<City> getAllCities(){
             return cityRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<City> getCustomerById(@PathVariable long id){
+    public Optional<City> getCityById(@PathVariable long id){
     return cityRepository.findById(id);
     }
 
     @PostMapping
-    public City createCustomer(@RequestBody City city){
+    public City createCity(@RequestBody City city){
      return cityRepository.save(city);
     }
 
 
     @DeleteMapping("/all")
-    public void deleteAllCustomers(@PathVariable long id){
+    public void deleteAllCities(@PathVariable long id){
       cityRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomerById(@PathVariable long id){
+    public void deleteCityById(@PathVariable long id){
       cityRepository.deleteById(id);
     }
 
