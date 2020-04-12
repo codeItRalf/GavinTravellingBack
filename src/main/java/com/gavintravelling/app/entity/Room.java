@@ -18,7 +18,6 @@ public class Room {
     private int roomNumber;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
     @JoinColumn(name = "room_type_id", referencedColumnName = "id")
     private RoomType roomType;
 

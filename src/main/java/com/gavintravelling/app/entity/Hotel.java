@@ -168,7 +168,6 @@ public class Hotel {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 

@@ -18,6 +18,16 @@ public class Booking {
     private int childrenCount;
     private int smallChildrenCount;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+
+    @OneToMany(mappedBy = "booking")
+    @JsonIgnore
+    private Set<BookedRoom> rooms;
+
+
     public int getPersonCount() {
         return personCount;
     }
@@ -41,20 +51,4 @@ public class Booking {
     public void setSmallChildrenCount(int smallChildrenCount) {
         this.smallChildrenCount = smallChildrenCount;
     }
-
-
-    //    @ManyToMany(cascade = CascadeType.ALL)
-//            @JoinTable(
-//                    name = "booked_rooms",
-//                    joinColumns = @JoinColumn(name = "booking_id"),
-//                    inverseJoinColumns = @JoinColumn(name = "room_id")
-//            )
-//   private Set<Room> bookedRooms;
-
-    @OneToMany(mappedBy = "booking")
-    @JsonIgnore
-    private Set<BookedRoom> rooms;
-
-
-
 }

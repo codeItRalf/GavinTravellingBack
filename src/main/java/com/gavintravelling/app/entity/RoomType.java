@@ -17,10 +17,9 @@ public class RoomType {
    private String roomType;
    private double price;
 
-   @OneToOne(cascade = CascadeType.ALL)
-   @JsonIgnore
-   @JoinColumn(name = "hotel_id", referencedColumnName = "id")
-   private Hotel hotel;
+     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hotel_id", referencedColumnName = "id")
+    private Hotel hotel;
 
     public String getRoomType() {
         return roomType;

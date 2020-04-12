@@ -17,7 +17,6 @@ public class Review {
     private String comment;
 
      @OneToOne(cascade = CascadeType.ALL)
-     @JsonIgnore
      @JoinColumn(name = "booking_id", referencedColumnName = "id")
      private Booking booking;
 
