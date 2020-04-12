@@ -22,9 +22,19 @@ public class RoomType {
    @JoinColumn(name = "hotel_id", referencedColumnName = "id")
    private Hotel hotel;
 
-    public RoomType(){
+    public String getRoomType() {
+        return roomType;
+    }
 
-     }
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
 
+    public double getPrice() {
+        return price;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }

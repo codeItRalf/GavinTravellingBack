@@ -1,16 +1,21 @@
 package com.gavintravelling.app.rest;
 
-import com.gavintravelling.app.entity.Customer;
+import com.gavintravelling.app.entity.Review;
 import com.gavintravelling.app.entity.Room;
+import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/room")
+@RequestMapping("/rest/rooms")
 public class RoomController {
 
     @Autowired
@@ -25,15 +30,28 @@ public class RoomController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Room> getRoomById(@PathVariable long id){
-    return roomRepository.findById(id);
+    public ResponseEntity<Room> getRoomById(@PathVariable long id) throws ResourceNotFoundException {
+        Room room = getEntity(id);
+        return ResponseEntity.ok().body(room);
     }
 
     @PostMapping
-    public Room createRoom(@RequestBody Room room){
+    public Room createRoom(@Valid @RequestBody Room room){
      return roomRepository.save(room);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Room> updateRoom(@PathVariable Long id,
+                                               @Valid @RequestBody Room roomDetails) throws ResourceNotFoundException {
+        Room room = getEntity(id);
+
+        room.setRoomNumber(roomDetails.getRoomNumber());
+        room.setRoomType(roomDetails.getRoomType());
+
+
+        final Room updatedRoom = roomRepository.save(room);
+        return ResponseEntity.ok(updatedRoom);
+    }
 
     @DeleteMapping("/all")
     public void deleteAllRooms(@PathVariable long id){
@@ -41,9 +59,17 @@ public class RoomController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteRoomById(@PathVariable long id){
-      roomRepository.deleteById(id);
+    public Map<String, Boolean> deleteRoomById(@PathVariable long id) throws ResourceNotFoundException {
+        Room room = getEntity(id);
+
+        roomRepository.delete(room);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
     }
 
-
+    private Room getEntity(Long id) throws ResourceNotFoundException {
+        return roomRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + id));
+    }
 }

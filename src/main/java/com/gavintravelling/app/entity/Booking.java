@@ -18,7 +18,32 @@ public class Booking {
     private int childrenCount;
     private int smallChildrenCount;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
+    public int getPersonCount() {
+        return personCount;
+    }
+
+    public void setPersonCount(int personCount) {
+        this.personCount = personCount;
+    }
+
+    public int getChildrenCount() {
+        return childrenCount;
+    }
+
+    public void setChildrenCount(int childrenCount) {
+        this.childrenCount = childrenCount;
+    }
+
+    public int getSmallChildrenCount() {
+        return smallChildrenCount;
+    }
+
+    public void setSmallChildrenCount(int smallChildrenCount) {
+        this.smallChildrenCount = smallChildrenCount;
+    }
+
+
+    //    @ManyToMany(cascade = CascadeType.ALL)
 //            @JoinTable(
 //                    name = "booked_rooms",
 //                    joinColumns = @JoinColumn(name = "booking_id"),

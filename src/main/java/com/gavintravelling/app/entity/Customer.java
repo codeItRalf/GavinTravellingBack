@@ -22,18 +22,52 @@ public class Customer {
     private String personNumber;
     private String password;
 
-    public Customer(){
 
-     }
-
-     Customer(String firstName, String lastName, String phoneNumber, String eMail, String personNumber, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.eMail = eMail;
-        this.personNumber = personNumber;
-        this.password = password;
+    public String getFirstName() {
+        return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getPersonNumber() {
+        return personNumber;
+    }
+
+    public void setPersonNumber(String personNumber) {
+        this.personNumber = personNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

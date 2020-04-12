@@ -16,21 +16,30 @@ public class Room {
 
     @Column(name = "rooms_number")
     private int roomNumber;
-//
-//    @ManyToMany(mappedBy = "bookedRooms")
-//    private Set<Booking> bookings;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "room_type_id", referencedColumnName = "id")
+    private RoomType roomType;
 
     @OneToMany(mappedBy = "room")
     @JsonIgnore
     private Set<BookedRoom> rooms;
 
 
+    public int getRoomNumber() {
+        return roomNumber;
+    }
 
-    public Room(){
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-     }
+    public RoomType getRoomType() {
+        return roomType;
+    }
 
-
-
-
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }
 }

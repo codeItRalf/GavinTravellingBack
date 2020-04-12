@@ -1,16 +1,19 @@
 package com.gavintravelling.app.rest;
 
-import com.gavintravelling.app.entity.Customer;
 import com.gavintravelling.app.entity.RoomType;
+import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.repository.RoomTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RestController
-@RequestMapping("/roomType")
+@RequestMapping("/rest/room-types")
 public class RoomTypeController {
 
     @Autowired
@@ -25,8 +28,9 @@ public class RoomTypeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<RoomType> getRoomTypeById(@PathVariable long id){
-    return roomTypeRepository.findById(id);
+    public ResponseEntity<RoomType> getRoomTypeById(@PathVariable long id) throws ResourceNotFoundException {
+        RoomType roomType = getEntity(id);
+        return ResponseEntity.ok().body(roomType);
     }
 
     @PostMapping
@@ -34,6 +38,16 @@ public class RoomTypeController {
      return roomTypeRepository.save(roomType);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<RoomType> updateRoomType(@PathVariable Long id,
+                                           @Valid @RequestBody RoomType roomTypeDetails) throws ResourceNotFoundException {
+        RoomType roomType = getEntity(id);
+
+        roomType.setRoomType(roomTypeDetails.getRoomType());
+        roomType.setPrice(roomTypeDetails.getPrice());
+        final RoomType updatedRoomType = roomTypeRepository.save(roomType);
+        return ResponseEntity.ok(updatedRoomType);
+    }
 
     @DeleteMapping("/all")
     public void deleteAllRoomTypes(@PathVariable long id){
@@ -41,8 +55,18 @@ public class RoomTypeController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteRoomTypeById(@PathVariable long id){
-      roomTypeRepository.deleteById(id);
+    public Map<String, Boolean> deleteRoomTypeById(@PathVariable long id) throws ResourceNotFoundException {
+        RoomType roomType = getEntity(id);
+
+        roomTypeRepository.delete(roomType);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+
+    private RoomType getEntity(Long id) throws ResourceNotFoundException {
+        return roomTypeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Room type not found for this id :: " + id));
     }
 
 }
