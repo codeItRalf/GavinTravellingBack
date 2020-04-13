@@ -19,13 +19,11 @@ public class BookedRoom {
 
     @ManyToOne
     @MapsId("booking_id")
-    @JsonIgnore
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
     @ManyToOne
     @MapsId("room_id")
-    @JsonIgnore
     @JoinColumn(name = "room_id")
     private Room room;
 

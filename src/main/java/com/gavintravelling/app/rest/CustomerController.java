@@ -57,6 +57,7 @@ public class CustomerController {
                                               @Valid @RequestBody Customer customerDetails) throws ResourceNotFoundException {
         Customer customer = getEntity(id);
 
+
         customer.setFirstName(customerDetails.getFirstName());
         customer.setLastName(customerDetails.getLastName());
         customer.setPhoneNumber(customerDetails.getPhoneNumber());
