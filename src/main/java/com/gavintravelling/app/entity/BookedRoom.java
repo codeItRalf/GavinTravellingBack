@@ -1,12 +1,12 @@
 package com.gavintravelling.app.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gavintravelling.app.embeddedId.BookedRoomsId;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+
 
 @Entity
 @Data
@@ -19,19 +19,21 @@ public class BookedRoom {
 
     @ManyToOne
     @MapsId("booking_id")
-    @JsonIgnore
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
     @ManyToOne
     @MapsId("room_id")
-    @JsonIgnore
     @JoinColumn(name = "room_id")
     private Room room;
 
 
     private int extraBed;
+
+    @Temporal(TemporalType.DATE)
     private Date startDate;
+
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
     public int getExtraBed() {
