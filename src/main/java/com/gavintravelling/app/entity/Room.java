@@ -25,6 +25,9 @@ public class Room {
     @JsonIgnore
     private Set<BookedRoom> rooms;
 
+    public Long getId() {
+        return id;
+    }
 
     public int getRoomNumber() {
         return roomNumber;

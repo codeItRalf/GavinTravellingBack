@@ -3,6 +3,7 @@ package com.gavintravelling.app.entity;
 
 import com.gavintravelling.app.embeddedId.BookedRoomsId;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;

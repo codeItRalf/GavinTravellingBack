@@ -13,6 +13,7 @@ public class Hotel {
 
     private  @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY ) Long id;
 
+
     private String name;
     private int stars;
     private String picture;
