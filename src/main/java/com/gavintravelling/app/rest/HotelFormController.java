@@ -1,15 +1,22 @@
 package com.gavintravelling.app.rest;
 
+import com.gavintravelling.app.entity.Hotel;
+import com.gavintravelling.app.model.HotelForm;
 import com.gavintravelling.app.repository.BookedRoomRepository;
 import com.gavintravelling.app.repository.HotelRepository;
 import com.gavintravelling.app.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
-@RequestMapping("/rest/search")
-public class SearchController {
+@RequestMapping("/rest/")
+public class HotelFormController {
 
     @Autowired
     private RoomRepository roomRepository;
@@ -19,6 +26,21 @@ public class SearchController {
 
     @Autowired
     private HotelRepository hotelRepository;
+
+
+    @PostMapping(value = "filterHotel")
+    public List<Hotel> filter(@Valid @ModelAttribute("hotelForm")HotelForm hotelForm,
+                                             BindingResult result){
+        if(result.hasErrors()){
+         return new ArrayList<>();
+         }
+//        return hotelRepository.getHotelsByCity_Name(hotelForm.getCityName());
+        return hotelRepository.getHotelsByPoolAndNightEntertainmentAndChildrenClubAndRestaurantAndDistanceToBeachIsLessThanEqualAndDistanceToCenterIsLessThanEqualAndCity_Name(
+                hotelForm.isHavePool(),hotelForm.isHaveNightEntertain(),hotelForm.isHaveChildrenClub(),hotelForm.isHaveRestaurant(),hotelForm.getDistBeach(),hotelForm.getDistCenter(),hotelForm.getCityName());
+
+        }
+    }
+
 
 //
 //    EquivalentToday at 8:26 AM
@@ -40,4 +62,4 @@ public class SearchController {
 //    Det är bara repository som länkar ihop Databasen med Java
 
 
-}
+
