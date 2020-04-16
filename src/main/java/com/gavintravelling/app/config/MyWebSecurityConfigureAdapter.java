@@ -23,8 +23,8 @@ public class MyWebSecurityConfigureAdapter extends WebSecurityConfigurerAdapter 
                   .httpBasic()
                   .and()
                   .authorizeRequests()
-                  .antMatchers("/rest/**").authenticated()
-                  .antMatchers("/").permitAll()
+//                  .antMatchers("/rest/**").authenticated()
+                  .antMatchers("/**").permitAll()
                   .and()
                   .formLogin();
     }
