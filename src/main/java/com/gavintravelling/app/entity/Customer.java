@@ -1,12 +1,12 @@
 package com.gavintravelling.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,9 +18,29 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String eMail;
+    @Column(name = "e_mail")
+    private String EMail;
     private String personNumber;
     private String password;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer",
+    cascade = CascadeType.ALL)
+    private Set<Booking> bookings;
+
+    public Customer() {
+    }
+
+    public Customer(String email, String password) {
+        this.firstName = "test";
+        this.lastName = "test";
+        this.phoneNumber = "0739990855";
+        this.EMail = email;
+        this.personNumber = "9999999";
+        this.password = password;
+    }
+
+
 
 
     public String getFirstName() {
@@ -47,12 +67,12 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEMail() {
+        return EMail;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void seteEMail(String eMail) {
+        this.EMail = eMail;
     }
 
     public String getPersonNumber() {
@@ -63,11 +83,15 @@ public class Customer {
         this.personNumber = personNumber;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

@@ -1,12 +1,11 @@
 package com.gavintravelling.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,6 +16,10 @@ public class City {
 
     private String name;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "city",
+            cascade = CascadeType.ALL)
+    private Set<Hotel> hotels;
 
     public String getName() {
         return name;

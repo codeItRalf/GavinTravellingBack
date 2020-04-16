@@ -1,5 +1,6 @@
 package com.gavintravelling.app.rest;
 
+
 import com.gavintravelling.app.entity.RoomType;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.repository.RoomTypeRepository;
@@ -21,6 +22,11 @@ public class RoomTypeController {
 
 
 
+
+    @GetMapping("/by-hotel/{hotelId}")
+    public Iterable<RoomType> getRoomTypesByHotel(@PathVariable long hotelId){
+        return roomTypeRepository.getRoomTypesByHotelId(hotelId);
+    }
 
     @GetMapping
     public Iterable<RoomType> getAllRoomTypes(){

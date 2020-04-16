@@ -17,7 +17,7 @@ public class Room {
     @Column(name = "rooms_number")
     private int roomNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "room_type_id", referencedColumnName = "id")
     private RoomType roomType;
 
@@ -25,6 +25,9 @@ public class Room {
     @JsonIgnore
     private Set<BookedRoom> rooms;
 
+    public Long getId() {
+        return id;
+    }
 
     public int getRoomNumber() {
         return roomNumber;

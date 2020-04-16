@@ -1,6 +1,5 @@
 package com.gavintravelling.app.rest;
 
-import com.gavintravelling.app.entity.City;
 import com.gavintravelling.app.entity.Customer;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.repository.CustomerRepository;
@@ -61,7 +60,7 @@ public class CustomerController {
         customer.setFirstName(customerDetails.getFirstName());
         customer.setLastName(customerDetails.getLastName());
         customer.setPhoneNumber(customerDetails.getPhoneNumber());
-        customer.seteMail(customerDetails.geteMail());
+        customer.seteEMail(customerDetails.getEMail());
         customer.setPassword(customerDetails.getPassword());
         final Customer updatedCustomer = cmrRepository.save(customer);
         return ResponseEntity.ok(updatedCustomer);

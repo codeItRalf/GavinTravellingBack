@@ -16,7 +16,7 @@ public class Review {
     private String rating;
     private String comment;
 
-     @OneToOne(cascade = CascadeType.ALL)
+     @OneToOne(optional = false)
      @JoinColumn(name = "booking_id", referencedColumnName = "id")
      private Booking booking;
 
