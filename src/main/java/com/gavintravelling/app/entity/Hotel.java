@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,6 +31,17 @@ public class Hotel {
     private double pensionHalfPrice;
     private double pensionFullPrice;
     private double allInclusive;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "hotel",
+            cascade = CascadeType.REMOVE)
+    private Set<RoomType> roomTypes;
+
+    @ManyToOne(optional = false,  cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
+    private City city;
+
 
 
     public String getName() {
@@ -168,9 +180,9 @@ public class Hotel {
         this.city = city;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "city_id", referencedColumnName = "id")
-    private City city;
 
 
+    public Long getId() {
+        return id;
+    }
 }

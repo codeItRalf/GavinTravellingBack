@@ -6,25 +6,26 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
 @Data
 @Table(name = "booked_rooms")
-public class BookedRoom {
+public class BookedRoom implements Serializable {
 
 
     @EmbeddedId
     private BookedRoomsId id;
 
     @ManyToOne
-    @MapsId("booking_id")
+    @MapsId("roomId")
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
     @ManyToOne
-    @MapsId("room_id")
+    @MapsId("bookingId")
     @JoinColumn(name = "room_id")
     private Room room;
 

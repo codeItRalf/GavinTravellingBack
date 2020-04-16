@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Optional;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,9 +19,16 @@ public class RoomType {
    private String roomType;
    private double price;
 
-     @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(optional = false,
+            cascade = CascadeType.REMOVE)
     @JoinColumn(name = "hotel_id", referencedColumnName = "id")
     private Hotel hotel;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "roomType",
+            cascade = CascadeType.REMOVE)
+    private Set<Room> rooms;
+
 
     public String getRoomType() {
         return roomType;
@@ -35,5 +44,9 @@ public class RoomType {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
     }
 }

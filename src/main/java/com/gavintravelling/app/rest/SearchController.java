@@ -1,34 +1,14 @@
 package com.gavintravelling.app.rest;
 
-
-import com.gavintravelling.app.entity.BookedRoom;
-import com.gavintravelling.app.entity.Room;
-import com.gavintravelling.app.entity.RoomType;
-import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.repository.BookedRoomRepository;
+import com.gavintravelling.app.repository.HotelRepository;
 import com.gavintravelling.app.repository.RoomRepository;
-import com.gavintravelling.app.repository.RoomTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/rest/search")
 public class SearchController {
 
     @Autowired
@@ -37,18 +17,27 @@ public class SearchController {
     @Autowired
     private BookedRoomRepository bookedRoomRepository;
 
+    @Autowired
+    private HotelRepository hotelRepository;
 
-    @GetMapping("/city={cityId}&startdate={startDate}&enddate={endDate}")
-    public List<Room> getRoomTypesByHotel(@PathVariable long cityId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")
-                                           Date endDate){
-
-
-        var rooms = (List<Room>) roomRepository.getAllByRoomType_Hotel_City_Id(cityId);
-        var bookedRoomsId = (List<Long>) bookedRoomRepository.getBookedRoomWithinDate(startDate,endDate);
-        int bookedRoomSize = bookedRoomsId.size();
-        return rooms.stream().filter(room -> !bookedRoomsId.contains(room.getId())).collect(Collectors.toList());
-
-    }
+//
+//    EquivalentToday at 8:26 AM
+//    Jag visade ju er ett alternativ (ModelAttribute elr liknande heter det)
+//    LajtToday at 8:26 AM
+//    Gjorde du ?
+//    EquivalentToday at 8:26 AM
+//    där man packar ihop alla dessa variabler till 1 enda stort objekt
+//    LajtToday at 8:27 AM
+//            Aha
+//    Börjar känna igen det
+//    EquivalentToday at 8:27 AM
+//    Övrigt: man behöver skapa en klass som innehåller alla dessa variabler med såklart.
+//    LajtToday at 8:28 AM
+//    Okej, behöver man skapa en liknande view med i SQL?
+//    EquivalentToday at 8:28 AM
+//            nä
+//    sql har inget att göra med Springs: Controller-klasser
+//    Det är bara repository som länkar ihop Databasen med Java
 
 
 }

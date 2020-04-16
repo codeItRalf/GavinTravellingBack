@@ -17,11 +17,15 @@ public class Booking {
     private int personCount;
     private int childrenCount;
     private int smallChildrenCount;
+    private boolean activeBooking;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private Customer customer;
 
+   @OneToOne(mappedBy = "booking")
+   @JsonIgnore
+   private Review review;
 
     @OneToMany(mappedBy = "booking")
     @JsonIgnore
@@ -50,5 +54,21 @@ public class Booking {
 
     public void setSmallChildrenCount(int smallChildrenCount) {
         this.smallChildrenCount = smallChildrenCount;
+    }
+
+    public boolean isActiveBooking() {
+        return activeBooking;
+    }
+
+    public void setActiveBooking(boolean activeBooking) {
+        this.activeBooking = activeBooking;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
