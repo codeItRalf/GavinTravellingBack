@@ -41,7 +41,7 @@ public class Hotel {
             cascade = CascadeType.REMOVE)
     private Set<RoomType> roomTypes;
 
-    @ManyToOne(optional = false,  cascade = CascadeType.REMOVE)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
     private City city;
 
