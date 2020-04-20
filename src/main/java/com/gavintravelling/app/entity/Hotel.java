@@ -2,13 +2,16 @@ package com.gavintravelling.app.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
+
 @Entity
-@Data
 @Table(name = "hotels")
 public class Hotel {
 
