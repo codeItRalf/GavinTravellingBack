@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.Set;
 
 @Entity
-@Data
 @Table(name = "room_types")
 public class RoomType {
 
@@ -25,7 +24,7 @@ public class RoomType {
     private Hotel hotel;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "roomType",
+    @OneToMany( mappedBy = "roomType",
             cascade = CascadeType.REMOVE)
     private Set<Room> rooms;
 

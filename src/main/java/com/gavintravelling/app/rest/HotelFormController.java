@@ -1,17 +1,22 @@
 package com.gavintravelling.app.rest;
 
 import com.gavintravelling.app.entity.Hotel;
+import com.gavintravelling.app.entity.Room;
 import com.gavintravelling.app.model.HotelForm;
 import com.gavintravelling.app.repository.BookedRoomRepository;
 import com.gavintravelling.app.repository.HotelRepository;
 import com.gavintravelling.app.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -34,32 +39,36 @@ public class HotelFormController {
         if(result.hasErrors()){
          return new ArrayList<>();
          }
-//        return hotelRepository.getHotelsByCity_Name(hotelForm.getCityName());
-        return hotelRepository.getHotelsByPoolAndNightEntertainmentAndChildrenClubAndRestaurantAndDistanceToBeachIsLessThanEqualAndDistanceToCenterIsLessThanEqualAndCity_Name(
-                hotelForm.isHavePool(),hotelForm.isHaveNightEntertain(),hotelForm.isHaveChildrenClub(),hotelForm.isHaveRestaurant(),hotelForm.getDistBeach(),hotelForm.getDistCenter(),hotelForm.getCityName());
+        List<Hotel> hotelResult = new ArrayList<>();
+        var hotels = hotelRepository.getHotelsByDistanceToBeachIsLessThanEqualAndDistanceToCenterIsLessThanEqualAndCity_Name(
+                hotelForm.getDistBeach(),hotelForm.getDistCenter(),hotelForm.getCityName()).stream().filter(hotel -> {
+            if(hotelForm.isHaveChildrenClub()){
+              return hotel.isChildrenClub();
+            }
+            if(hotelForm.isHaveNightEntertain()){
+            return hotel.isNightEntertainment();
+            }
+            if(hotelForm.isHavePool()){
+                return hotel.isPool();
+            }
+            if(hotelForm.isHaveRestaurant()){
+                return hotel.isRestaurant();
+            }
+            return true;
+        }).collect(Collectors.toList());
 
+        var rooms = (List<Room>) roomRepository.getRoomsByRoomType_HotelIn(hotels);
+        var bookedRoomsId = (List<Long>) bookedRoomRepository.getBookedRoomWithinDate(hotelForm.getStartDate(),hotelForm.getEndDate());
+
+        Map<Object, List<Room>> mappedByHotel = rooms.stream().filter(room -> !bookedRoomsId.contains(room.getId())).collect(Collectors.groupingBy(room -> room.getRoomType().getHotel()));
+        mappedByHotel.forEach((k,v)-> {
+            if(v.size() >= hotelForm.getRoomCount()){
+                hotelResult.add((Hotel) k);
+            }
+        });
+        return hotelResult;
         }
     }
-
-
-//
-//    EquivalentToday at 8:26 AM
-//    Jag visade ju er ett alternativ (ModelAttribute elr liknande heter det)
-//    LajtToday at 8:26 AM
-//    Gjorde du ?
-//    EquivalentToday at 8:26 AM
-//    där man packar ihop alla dessa variabler till 1 enda stort objekt
-//    LajtToday at 8:27 AM
-//            Aha
-//    Börjar känna igen det
-//    EquivalentToday at 8:27 AM
-//    Övrigt: man behöver skapa en klass som innehåller alla dessa variabler med såklart.
-//    LajtToday at 8:28 AM
-//    Okej, behöver man skapa en liknande view med i SQL?
-//    EquivalentToday at 8:28 AM
-//            nä
-//    sql har inget att göra med Springs: Controller-klasser
-//    Det är bara repository som länkar ihop Databasen med Java
 
 
 
