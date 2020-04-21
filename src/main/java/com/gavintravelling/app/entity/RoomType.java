@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -16,8 +15,8 @@ public class RoomType {
     private  @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY ) Long id;
 
     @Column
-   private String roomType;
-   private double price;
+    private String roomType;
+    private double price;
 
     @ManyToOne(optional = false,
             cascade = CascadeType.REMOVE)
@@ -29,6 +28,11 @@ public class RoomType {
             cascade = CascadeType.REMOVE)
     private Set<Room> rooms;
 
+    public RoomType(){}
+    public RoomType(String roomtype, Double pris){
+        this.roomType = roomtype;
+        this.price = pris;
+    }
 
     public String getRoomType() {
         return roomType;
