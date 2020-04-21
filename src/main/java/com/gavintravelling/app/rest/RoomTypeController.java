@@ -9,8 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -20,12 +19,14 @@ public class RoomTypeController {
     @Autowired
     private RoomTypeRepository roomTypeRepository;
 
-
-
-
     @GetMapping("/by-hotel/{hotelId}")
     public Iterable<RoomType> getRoomTypesByHotel(@PathVariable long hotelId){
         return roomTypeRepository.getRoomTypesByHotelId(hotelId);
+    }
+
+    @GetMapping("/by-hotel/types/{hotelId}")
+    public Iterable<RoomType> countRoomTypesByHotelId(@PathVariable long hotelId){
+        return roomTypeRepository.countRoomTypesByHotelId(hotelId);
     }
 
     @GetMapping
