@@ -32,10 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/rest/**").authenticated()
                 .antMatchers(HttpMethod.POST, "/rest/filterHotel").authenticated()
-                .antMatchers("/registrera/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/rest/registrera/**").permitAll()
                 .and()
                 .formLogin();
-              //  .loginPage("/login");
+              //  .loginPage("/rest/login");
 
     }
 

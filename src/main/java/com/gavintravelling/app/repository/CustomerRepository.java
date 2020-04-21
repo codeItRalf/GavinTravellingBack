@@ -11,6 +11,6 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
    List<Customer> findCustomersByFirstNameContaining(String firstName);
    List<Customer> findCustomersByLastNameContaining(String lastName);
-
+   boolean existsCustomerByEMailIgnoreCase(String EMail);
    Customer findByEMailIgnoreCase(String email);
 }

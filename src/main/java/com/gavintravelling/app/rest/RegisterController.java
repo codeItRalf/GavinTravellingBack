@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/rest/register")
+@RequestMapping("/rest/registrera")
 public class RegisterController {
 
     @Autowired
@@ -42,8 +42,10 @@ public class RegisterController {
           throw  new BindException(result);
         }
 
-
-        return  ResponseEntity.ok(new Customer());
+        var newUser = new Customer(registerForm.getFirstName(),registerForm.getLastName(),registerForm.getPhoneNumber(),
+                registerForm.geteMail(), registerForm.getPersonNumber(), registerForm.getPassword());
+        userService.RegisterUser(newUser);
+        return  ResponseEntity.ok(newUser);
 }
 
 
