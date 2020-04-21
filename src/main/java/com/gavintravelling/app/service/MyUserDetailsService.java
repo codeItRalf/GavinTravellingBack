@@ -9,10 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.PostConstruct;
-import javax.validation.Valid;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -44,13 +42,15 @@ public class MyUserDetailsService implements UserDetailsService {
      return    toUserDetails(customer);
     }
 
-    public void addCustomer(Customer customer){
+    public Customer addCustomer(Customer customer){
         var c = new Customer(customer.getFirstName(), customer.getLastName(),customer.getPhoneNumber(),customer.getEMail(),customer.getPersonNumber(), getEncoder().encode(customer.getPassword()));
         try {
-            customerRepository.save(c);
+         return    customerRepository.save(c);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        return null;
     }
 
 
