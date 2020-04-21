@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
 @Table(name = "customers")
 public class Customer {
 
@@ -29,6 +28,15 @@ public class Customer {
     private Set<Booking> bookings;
 
     public Customer() {
+    }
+
+    public Customer(String firstName, String lastName, String phoneNumber, String eMail, String personNumber, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.EMail = eMail;
+        this.personNumber = personNumber;
+        this.password = password;
     }
 
     public Customer(String email, String password) {
