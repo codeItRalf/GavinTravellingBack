@@ -7,7 +7,6 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Data
 @Table(name = "reviews")
 public class Review {
 
@@ -20,6 +19,22 @@ public class Review {
      @JoinColumn(name = "booking_id", referencedColumnName = "id")
      private Booking booking;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 
     public String getRating() {
         return rating;
