@@ -20,22 +20,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-//                .csrf().disable()
-//                  .httpBasic()
-//                  .and()
-//                  .authorizeRequests()
-//                  .antMatchers("/rest/**").authenticated()
-//                  .antMatchers("/**").permitAll()
-//                  .and()
-//                  .formLogin();
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/rest/**").authenticated()
-                .antMatchers(HttpMethod.POST, "/rest/filterHotel").authenticated()
-                .antMatchers("/registrera/**").permitAll()
-                .and()
-                .formLogin();
-              //  .loginPage("/login");
+                  .httpBasic()
+                  .and()
+                  .authorizeRequests()
+                  .antMatchers("/rest/**").authenticated()
+                  .antMatchers("/**").permitAll()
+                  .and()
+                  .formLogin();
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/**").permitAll()
+////                .antMatchers(HttpMethod.GET, "/rest/**").authenticated()
+////                .antMatchers(HttpMethod.POST, "/rest/filterHotel").authenticated()
+////                .antMatchers(HttpMethod.POST,"/rest/registrera/**").permitAll()
+//                .and()
+//                .formLogin();
+            //     .loginPage("/rest/login");
 
     }
 
