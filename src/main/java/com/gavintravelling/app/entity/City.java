@@ -17,8 +17,7 @@ public class City {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "city",
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "city")
     private Set<Hotel> hotels;
 
     public String getName() {

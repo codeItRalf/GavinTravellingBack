@@ -19,26 +19,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.cors().and()
                 .csrf().disable()
-                  .httpBasic()
-                  .and()
-                  .authorizeRequests()
-                  .antMatchers("/rest/**").authenticated()
-                  .antMatchers("/**").permitAll()
-                  .and()
-                  .formLogin();
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/**").permitAll()
-////                .antMatchers(HttpMethod.GET, "/rest/**").authenticated()
-////                .antMatchers(HttpMethod.POST, "/rest/filterHotel").authenticated()
-////                .antMatchers(HttpMethod.POST,"/rest/registrera/**").permitAll()
-//                .and()
-//                .formLogin();
-            //     .loginPage("/rest/login");
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/rest/customers/*").authenticated()
+                .antMatchers("/rest/**").authenticated()
+                .and()
+                .formLogin();
 
     }
+
+
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
