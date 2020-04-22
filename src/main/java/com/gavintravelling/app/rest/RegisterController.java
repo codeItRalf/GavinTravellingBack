@@ -5,6 +5,7 @@ import com.gavintravelling.app.entity.Hotel;
 import com.gavintravelling.app.entity.Room;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.modelDto.HotelForm;
+import com.gavintravelling.app.modelDto.LoginForm;
 import com.gavintravelling.app.modelDto.RegisterForm;
 import com.gavintravelling.app.repository.CustomerRepository;
 import com.gavintravelling.app.service.UserService;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/rest/registrera")
+@RequestMapping("/rest")
 public class RegisterController {
 
     @Autowired
@@ -36,7 +37,7 @@ public class RegisterController {
 
 
     @PostMapping
-    public ResponseEntity<Customer> filter(@Valid @ModelAttribute("registerForm") RegisterForm registerForm,
+    public ResponseEntity<Customer> register(@Valid @ModelAttribute("register") RegisterForm registerForm,
                               BindingResult result) throws BindException {
         if(result.hasErrors()){
           throw  new BindException(result);
@@ -47,6 +48,7 @@ public class RegisterController {
         userService.RegisterUser(newUser);
         return  ResponseEntity.ok(newUser);
 }
+
 
 
 

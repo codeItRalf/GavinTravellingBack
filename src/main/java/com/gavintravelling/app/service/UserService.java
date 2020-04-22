@@ -21,6 +21,8 @@ public class UserService {
         return customerRepository.findByEMailIgnoreCase(userName);
     }
 
+
+
     public boolean customerAlreadyExistsByEmail(String email){
         return customerRepository.existsCustomerByEMailIgnoreCase(email);
     }
