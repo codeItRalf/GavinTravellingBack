@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data
 @Table(name = "bookings")
 public class Booking {
 
@@ -67,6 +66,31 @@ public class Booking {
     public Customer getCustomer() {
         return customer;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Review getReview() {
+        return review;
+    }
+
+    public void setReview(Review review) {
+        this.review = review;
+    }
+
+    public Set<BookedRoom> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<BookedRoom> rooms) {
+        this.rooms = rooms;
+    }
+
 
     public void setCustomer(Customer customer) {
         this.customer = customer;

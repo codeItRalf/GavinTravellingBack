@@ -24,7 +24,7 @@ public class RegisterController {
     }
 
 
-    @PostMapping
+    @PostMapping(value = "/register")
     public ResponseEntity<Customer> register(@Valid @ModelAttribute("register") RegisterForm registerForm,
                               BindingResult result) throws BindException {
         if(result.hasErrors()){
@@ -33,8 +33,8 @@ public class RegisterController {
 
         var newUser = new Customer(registerForm.getFirstName(),registerForm.getLastName(),registerForm.getPhoneNumber(),
                 registerForm.geteMail(), registerForm.getPersonNumber(), registerForm.getPassword());
-        userService.RegisterUser(newUser);
-        return  ResponseEntity.ok(newUser);
+
+        return  ResponseEntity.ok(userService.RegisterUser(newUser));
 }
 
 

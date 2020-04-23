@@ -183,7 +183,17 @@ public class Hotel {
         this.city = city;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public Set<RoomType> getRoomTypes() {
+        return roomTypes;
+    }
+
+    public void setRoomTypes(Set<RoomType> roomTypes) {
+        this.roomTypes = roomTypes;
+    }
 
     public Long getId() {
         return id;
