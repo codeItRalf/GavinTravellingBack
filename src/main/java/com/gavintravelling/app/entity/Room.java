@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
 @Table(name = "rooms")
 public class Room {
 
@@ -24,6 +23,18 @@ public class Room {
     @OneToMany(mappedBy = "room")
     @JsonIgnore
     private Set<BookedRoom> rooms;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<BookedRoom> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<BookedRoom> rooms) {
+        this.rooms = rooms;
+    }
 
     public Long getId() {
         return id;
@@ -44,4 +55,6 @@ public class Room {
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
+
+
 }

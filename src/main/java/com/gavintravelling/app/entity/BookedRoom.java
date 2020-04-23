@@ -11,7 +11,6 @@ import java.util.Date;
 
 
 @Entity
-@Data
 @Table(name = "booked_rooms")
 public class BookedRoom implements Serializable {
 
@@ -64,5 +63,30 @@ public class BookedRoom implements Serializable {
 
     public BookedRoom() {
     }
+
+    public BookedRoomsId getId() {
+        return id;
+    }
+
+    public void setId(BookedRoomsId id) {
+        this.id = id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
 
 }
