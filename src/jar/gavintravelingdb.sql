@@ -31,8 +31,9 @@ CREATE TABLE IF NOT EXISTS `booked_rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.booked_rooms: ~3 rows (approximately)
+DELETE FROM `booked_rooms`;
 /*!40000 ALTER TABLE `booked_rooms` DISABLE KEYS */;
-INSERT IGNORE INTO `booked_rooms` (`booking_id`, `room_id`, `extra_bed`, `start_date`, `end_date`) VALUES
+INSERT INTO `booked_rooms` (`booking_id`, `room_id`, `extra_bed`, `start_date`, `end_date`) VALUES
 	(2, 2, 3, '2020-06-19 00:00:00', '2020-06-24 00:00:00'),
 	(3, 3, 0, '2020-06-01 15:00:00', '2020-06-25 12:00:00'),
 	(5, 2, 1, '2020-07-01 15:00:00', '2020-07-04 11:00:00');
@@ -52,8 +53,9 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.bookings: ~6 rows (approximately)
+DELETE FROM `bookings`;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT IGNORE INTO `bookings` (`id`, `customer_id`, `person_count`, `children_count`, `small_children_count`, `active_booking`) VALUES
+INSERT INTO `bookings` (`id`, `customer_id`, `person_count`, `children_count`, `small_children_count`, `active_booking`) VALUES
 	(1, 1, 2, 2, 1, b'1'),
 	(2, 2, 2, 1, 1, b'0'),
 	(3, 3, 2, 2, 1, b'0'),
@@ -70,8 +72,9 @@ CREATE TABLE IF NOT EXISTS `cities` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.cities: ~5 rows (approximately)
+DELETE FROM `cities`;
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
-INSERT IGNORE INTO `cities` (`id`, `name`) VALUES
+INSERT INTO `cities` (`id`, `name`) VALUES
 	(1, 'gagarin'),
 	(2, 'tubel'),
 	(3, 'dallas'),
@@ -93,8 +96,9 @@ CREATE TABLE IF NOT EXISTS `customers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.customers: ~14 rows (approximately)
+DELETE FROM `customers`;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT IGNORE INTO `customers` (`id`, `first_name`, `last_name`, `phone_number`, `e_mail`, `password`, `person_number`) VALUES
+INSERT INTO `customers` (`id`, `first_name`, `last_name`, `phone_number`, `e_mail`, `password`, `person_number`) VALUES
 	(1, 'lonnard', 'BananMannen', '1974177936', 'lsamwell0@scribd.com', 'eilkoip', '1987604839'),
 	(2, 'raquel', 'ygoe', '7702878342', 'rygoe1@github.com', '1nvqg7zvrzfd', '1975967927'),
 	(3, 'paulita', 'harverson', '9978691640', 'pharverson2@prlog.org', 'ownjzsu', '1990150778'),
@@ -138,8 +142,9 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.hotels: ~7 rows (approximately)
+DELETE FROM `hotels`;
 /*!40000 ALTER TABLE `hotels` DISABLE KEYS */;
-INSERT IGNORE INTO `hotels` (`id`, `name`, `stars`, `city_id`, `picture`, `phone`, `e_mail`, `address`, `postal_code`, `pool`, `night_entertainment`, `restaurant`, `children_club`, `distance_to_beach`, `distance_to_center`, `pension_half_price`, `pension_full_price`, `all_inclusive`, `extra_bed`) VALUES
+INSERT INTO `hotels` (`id`, `name`, `stars`, `city_id`, `picture`, `phone`, `e_mail`, `address`, `postal_code`, `pool`, `night_entertainment`, `restaurant`, `children_club`, `distance_to_beach`, `distance_to_center`, `pension_half_price`, `pension_full_price`, `all_inclusive`, `extra_bed`) VALUES
 	(1, 'roberts-heller', 1, 1, '', '647 946 9787', 'gglendinning0@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849, 0),
 	(2, 'gorczany inc', 1, 2, '', '458 249 3466', 'fstrowger1@mayoclinic.com', 'ohio', '26787', b'1', b'0', b'0', b'0', 8, 2, 239, 562, 943, 0),
 	(3, 'bartoletti and sons', 3, 3, '', '208 116 2957', 'asyers2@people.com.cn', 'john wall', '26467', b'1', b'0', b'0', b'0', 11, 7, 238, 467, 839, 0),
@@ -162,8 +167,9 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.reviews: ~4 rows (approximately)
+DELETE FROM `reviews`;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
-INSERT IGNORE INTO `reviews` (`id`, `rating`, `comment`, `booking_id`) VALUES
+INSERT INTO `reviews` (`id`, `rating`, `comment`, `booking_id`) VALUES
 	(1, 5, 'Good hotel :)', 1),
 	(2, 1, 'Bad hotel :)', 2),
 	(3, 3, 'Jag gillar ost', 3),
@@ -181,8 +187,9 @@ CREATE TABLE IF NOT EXISTS `rooms` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.rooms: ~6 rows (approximately)
+DELETE FROM `rooms`;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
-INSERT IGNORE INTO `rooms` (`id`, `room_type_id`, `rooms_number`) VALUES
+INSERT INTO `rooms` (`id`, `room_type_id`, `rooms_number`) VALUES
 	(1, 1, 1),
 	(2, 2, 2),
 	(3, 3, 3),
@@ -203,8 +210,9 @@ CREATE TABLE IF NOT EXISTS `room_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table gavintravelingdb.room_types: ~31 rows (approximately)
+DELETE FROM `room_types`;
 /*!40000 ALTER TABLE `room_types` DISABLE KEYS */;
-INSERT IGNORE INTO `room_types` (`id`, `hotel_id`, `room_type`, `price`) VALUES
+INSERT INTO `room_types` (`id`, `hotel_id`, `room_type`, `price`) VALUES
 	(1, 4, 'dubbelrum', 1999),
 	(2, 1, 'dubbelrum', 1782),
 	(3, 2, 'dubbelrum', 1514),
