@@ -28,8 +28,8 @@ public class RoomType {
     private Set<Room> rooms;
 
     public RoomType(){}
-    public RoomType(String roomtype, Double pris){
-        this.roomType = roomtype;
+    public RoomType(String roomType, Double pris){
+        this.roomType = roomType;
         this.price = pris;
     }
 
