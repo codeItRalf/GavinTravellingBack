@@ -2,14 +2,15 @@ package com.gavintravelling.app.repository;
 
 
 import com.gavintravelling.app.entity.Customer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
-    Customer findByFirstName(String firstName);
-    Customer findByLastName(String surname);
-    List<Customer> findAllByFirstName(String name);
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+   List<Customer> findCustomersByFirstNameContaining(String firstName);
+   List<Customer> findCustomersByLastNameContaining(String lastName);
+   boolean existsCustomerByEMailIgnoreCase(String EMail);
+   Customer findByEMailIgnoreCase(String email);
 }
