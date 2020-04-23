@@ -22,13 +22,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/rest/customers").authenticated()
-                .antMatchers(HttpMethod.GET, "/rest/customers/*").authenticated()
+                .antMatchers(HttpMethod.GET, "/rest/customers*").authenticated()
                 .antMatchers(HttpMethod.POST,"/rest/hotelForm/*").permitAll()
                 .antMatchers(HttpMethod.POST,"/rest/register/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/**").permitAll()
                 .and()
-                .formLogin();
+                .formLogin()
+        .and()
+        .httpBasic();
     }
 
 

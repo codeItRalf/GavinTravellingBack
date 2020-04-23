@@ -34,6 +34,7 @@ public class Hotel {
     private double pensionHalfPrice;
     private double pensionFullPrice;
     private double allInclusive;
+    private double extraBed;
 
 
     @JsonIgnore
@@ -193,6 +194,14 @@ public class Hotel {
 
     public void setRoomTypes(Set<RoomType> roomTypes) {
         this.roomTypes = roomTypes;
+    }
+
+    public double getExtraBed() {
+        return extraBed;
+    }
+
+    public void setExtraBed(double extraBed) {
+        this.extraBed = extraBed;
     }
 
     public Long getId() {

@@ -21,7 +21,9 @@ public class UserService {
         return customerRepository.findByEMailIgnoreCase(userName);
     }
 
-
+    public boolean customerExists(String mail){
+       return customerRepository.existsCustomerByEMailIgnoreCase(mail);
+    }
 
     public Customer RegisterUser(Customer customer){
         return myUserDetailsService.addCustomer(customer);
