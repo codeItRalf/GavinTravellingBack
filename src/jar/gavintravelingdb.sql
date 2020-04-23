@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `person_number` varchar(13) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `e_mail` (`e_mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table gavintravelingdb.customers: ~7 rows (approximately)
+-- Dumping data for table gavintravelingdb.customers: ~13 rows (approximately)
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 INSERT IGNORE INTO `customers` (`id`, `first_name`, `last_name`, `phone_number`, `e_mail`, `password`, `person_number`) VALUES
 	(1, 'lonnard', 'BananMannen', '1974177936', 'lsamwell0@scribd.com', 'eilkoip', '1987604839'),
@@ -102,7 +102,13 @@ INSERT IGNORE INTO `customers` (`id`, `first_name`, `last_name`, `phone_number`,
 	(5, 'vanya', 'atyea', '6578857057', 'vatyea4@purevolume.com', 'jizozevgzzsk', '1986505981'),
 	(6, 'Lisa', 'Hansson', '0739990854', 'Lisa@mail.com', 'hemligt', '1980030920'),
 	(7, 'Kurt', 'Hansson', '0739990854', 'Kurt@mail.com', 'hemligt', '1980030920'),
-	(8, 'test', 'test', '0739990855', 'test@mail.com', '$2a$10$B789zZwhK1dWpie0CkVCvOfPVLBiky7iaQ2/41KnfwPZr.gGHYbaW', '9999999');
+	(8, 'test', 'test', '0739990855', 'test@mail.com', '$2a$10$B789zZwhK1dWpie0CkVCvOfPVLBiky7iaQ2/41KnfwPZr.gGHYbaW', '9999999'),
+	(9, 'Lennart', 'Banan', '0739990855', 'banan@mail.com', '$2a$10$D.NqvLFC85IFKxU6Cq2DieapKRw6vyA06y9vNTBD9JSk.BtV2M8q6', '8709277'),
+	(10, 'Lennart', 'Banan', '0739990855', 'banan3@mail.com', '$2a$10$dU3Uu1Pmp4I6cnuH3wYUe.xByyASEbeEe7BtPf7K5b1q3pqcQE1XC', '8709277'),
+	(11, 'Hans', 'Banan', '0739990855', 'banan5@mail.com', '$2a$10$qwKiGk9qVxf/1kyr1P0MieNjNxe.S1yqYN21cgEwo/Dg8G8a1sWWe', '8709277'),
+	(12, 'Bengan', 'Banan', '0739990855', 'banan27@mail.com', '$2a$10$D01DSgWKYm4v6QmaIzgCAuGc/wjbNaUyWGK7c1IcNhytH4o46oSRq', '8709277'),
+	(14, 'Bengan', 'Banan', '0739990855', 'banan17@mail.com', '$2a$10$FVixqfoXh4aXPGXoE9tUwO0q8pjL0yXF6wvaucySE3hhzXVG6Xzau', '8709277'),
+	(16, 'Bengan', 'Banan', '0739990855', 'banan37@mail.com', '$2a$10$bnRwYTfSvBIUpcEX6cRFhOZTvCxZF11V5kwOnHnOWxcAitcIjvr9K', '8709277');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 
 -- Dumping structure for table gavintravelingdb.hotels
@@ -125,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `pension_half_price` double(22,0) unsigned NOT NULL,
   `pension_full_price` double(22,0) unsigned NOT NULL,
   `all_inclusive` double(22,0) unsigned NOT NULL,
+  `extra_bed` double unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fkIdx_152` (`city_id`),
   CONSTRAINT `FK_152` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
@@ -132,14 +139,14 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 
 -- Dumping data for table gavintravelingdb.hotels: ~7 rows (approximately)
 /*!40000 ALTER TABLE `hotels` DISABLE KEYS */;
-INSERT IGNORE INTO `hotels` (`id`, `name`, `stars`, `city_id`, `picture`, `phone`, `e_mail`, `address`, `postal_code`, `pool`, `night_entertainment`, `restaurant`, `children_club`, `distance_to_beach`, `distance_to_center`, `pension_half_price`, `pension_full_price`, `all_inclusive`) VALUES
-	(1, 'roberts-heller', 1, 1, '', '647 946 9787', 'gglendinning0@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849),
-	(2, 'gorczany inc', 1, 2, '', '458 249 3466', 'fstrowger1@mayoclinic.com', 'ohio', '26787', b'1', b'0', b'0', b'0', 8, 2, 239, 562, 943),
-	(3, 'bartoletti and sons', 3, 3, '', '208 116 2957', 'asyers2@people.com.cn', 'john wall', '26467', b'1', b'0', b'0', b'0', 11, 7, 238, 467, 839),
-	(4, 'hessel group', 2, 4, '', '613 631 2948', 'xmulvaney3@cargocollective.com', 'hoepker', '26683', b'0', b'1', b'0', b'1', 15, 5, 274, 546, 999),
-	(5, 'predovic-cassin', 3, 5, '', '800 863 4709', 'ebownes4@issuu.com', 'farmco', '26685', b'1', b'1', b'0', b'0', 20, 11, 247, 430, 930),
-	(6, 'banana hotel', 1, 1, '', '647 946 9787', 'banana2@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849),
-	(7, 'new banana hotel', 1, 1, '', '647 946 9787', 'banana2@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849);
+INSERT IGNORE INTO `hotels` (`id`, `name`, `stars`, `city_id`, `picture`, `phone`, `e_mail`, `address`, `postal_code`, `pool`, `night_entertainment`, `restaurant`, `children_club`, `distance_to_beach`, `distance_to_center`, `pension_half_price`, `pension_full_price`, `all_inclusive`, `extra_bed`) VALUES
+	(1, 'roberts-heller', 1, 1, '', '647 946 9787', 'gglendinning0@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849, 0),
+	(2, 'gorczany inc', 1, 2, '', '458 249 3466', 'fstrowger1@mayoclinic.com', 'ohio', '26787', b'1', b'0', b'0', b'0', 8, 2, 239, 562, 943, 0),
+	(3, 'bartoletti and sons', 3, 3, '', '208 116 2957', 'asyers2@people.com.cn', 'john wall', '26467', b'1', b'0', b'0', b'0', 11, 7, 238, 467, 839, 0),
+	(4, 'hessel group', 2, 4, '', '613 631 2948', 'xmulvaney3@cargocollective.com', 'hoepker', '26683', b'0', b'1', b'0', b'1', 15, 5, 274, 546, 999, 0),
+	(5, 'predovic-cassin', 3, 5, '', '800 863 4709', 'ebownes4@issuu.com', 'farmco', '26685', b'1', b'1', b'0', b'0', 20, 11, 247, 430, 930, 0),
+	(6, 'banana hotel', 1, 1, '', '647 946 9787', 'banana2@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849, 0),
+	(7, 'new banana hotel', 1, 1, '', '647 946 9787', 'banana2@dagondesign.com', '4th', '26653', b'1', b'1', b'1', b'0', 2, 20, 250, 431, 849, 0);
 /*!40000 ALTER TABLE `hotels` ENABLE KEYS */;
 
 -- Dumping structure for table gavintravelingdb.reviews
