@@ -3,7 +3,7 @@ package com.gavintravelling.app.security;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gavintravelling.app.entity.Customer;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gavintravelling.app.repository.CustomerRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,12 +24,17 @@ import static com.gavintravelling.app.security.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-
+    private CustomerRepository customerRepository;
     private AuthenticationManager authenticationManager;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthenticationFilter(CustomerRepository customerRepository, AuthenticationManager authenticationManager) {
+        this.customerRepository = customerRepository;
         this.authenticationManager = authenticationManager;
     }
+
+//    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+//        this.authenticationManager = authenticationManager;
+//    }
 
 
     @Override
@@ -40,7 +45,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            creds.getEMail(),
+                            creds.geteEMail(),
                             creds.getPassword(),
                             new ArrayList<>())
             );
@@ -52,10 +57,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+       String userName = ((User) authResult.getPrincipal()).getUsername();
         String token = JWT.create()
-                .withSubject(((User) authResult.getPrincipal()).getUsername())
+                .withSubject(userName)
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
+        var customer = customerRepository.findByEMailIgnoreCase(userName);
+        customer.setTokenId(token);
+        customerRepository.save(customer);
         response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
 }

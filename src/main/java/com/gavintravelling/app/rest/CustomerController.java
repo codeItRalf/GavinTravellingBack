@@ -2,9 +2,10 @@ package com.gavintravelling.app.rest;
 
 import com.gavintravelling.app.entity.Customer;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
+import com.gavintravelling.app.modelDto.TokenId;
 import com.gavintravelling.app.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,18 +17,18 @@ import java.util.Map;
 @RequestMapping("/rest/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerRepository cmrRepository;
 
+   private CustomerRepository customerRepository;
+   private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
-
-    public CustomerController() {
+    public CustomerController(CustomerRepository customerRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.customerRepository = customerRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping
     public Iterable<Customer> getAllCustomers(){
-            return cmrRepository.findAll();
+            return customerRepository.findAll();
     }
 
     @GetMapping("/{id}")
@@ -37,20 +38,19 @@ public class CustomerController {
         return ResponseEntity.ok().body(customer);
     }
 
-    @GetMapping("firstName={searchValue}")
-    public Iterable<Customer> findCustomersByFirstName(@PathVariable String searchValue){
-        return cmrRepository.findCustomersByFirstNameContaining(searchValue);
-    }
 
-    @GetMapping("lastName={searchValue}")
-    public Iterable<Customer> findCustomersByLastName(@PathVariable String searchValue){
-        return cmrRepository.findCustomersByLastNameContaining(searchValue);
-    }
 
-    @PostMapping
+    @PostMapping("/sign-up")
     public Customer createCustomer(@Valid @RequestBody Customer customer){
-     return cmrRepository.save(customer);
+        customer.setPassword(bCryptPasswordEncoder.encode(customer.getPassword()));
+     return customerRepository.save(customer);
     }
+
+    @PostMapping("/auth")
+    public Customer authCustomer(@Valid @RequestBody TokenId tokenId){
+        return customerRepository.findByTokenId(tokenId.getTokenId());
+    }
+
 
 
     @PutMapping("/{id}")
@@ -62,15 +62,15 @@ public class CustomerController {
         customer.setFirstName(customerDetails.getFirstName());
         customer.setLastName(customerDetails.getLastName());
         customer.setPhoneNumber(customerDetails.getPhoneNumber());
-        customer.seteEMail(customerDetails.getEMail());
+        customer.seteEMail(customerDetails.geteEMail());
         customer.setPassword(customerDetails.getPassword());
-        final Customer updatedCustomer = cmrRepository.save(customer);
+        final Customer updatedCustomer = customerRepository.save(customer);
         return ResponseEntity.ok(updatedCustomer);
     }
 
     @DeleteMapping("/all")
     public void deleteAllCustomers(@PathVariable long id){
-      cmrRepository.deleteAll();
+      customerRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
@@ -78,14 +78,14 @@ public class CustomerController {
 
         Customer customer = getEntity(id);
 
-        cmrRepository.delete(customer);
+        customerRepository.delete(customer);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
     }
 
     private Customer getEntity(Long id) throws ResourceNotFoundException {
-        return cmrRepository.findById(id)
+        return customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + id));
     }
 }

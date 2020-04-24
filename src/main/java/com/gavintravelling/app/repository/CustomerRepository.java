@@ -9,9 +9,7 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-   List<Customer> findCustomersByFirstNameContaining(String firstName);
-   List<Customer> findCustomersByLastNameContaining(String lastName);
-   boolean existsCustomerByEMailIgnoreCase(String EMail);
    Customer findByEMailIgnoreCase(String email);
    Customer findByEMailIgnoreCaseAndPassword(String EMail, String password);
+   Customer findByTokenId(String tokenId);
 }

@@ -17,6 +17,33 @@ public class Booking {
     private int childrenCount;
     private int smallChildrenCount;
     private boolean activeBooking;
+    private int fullPension;
+    private int halfPension;
+    private int allInclusive;
+
+    public int getFullPension() {
+        return fullPension;
+    }
+
+    public void setFullPension(int fullPension) {
+        this.fullPension = fullPension;
+    }
+
+    public int getHalfPension() {
+        return halfPension;
+    }
+
+    public void setHalfPension(int halfPension) {
+        this.halfPension = halfPension;
+    }
+
+    public int getAllInclusive() {
+        return allInclusive;
+    }
+
+    public void setAllInclusive(int allInclusive) {
+        this.allInclusive = allInclusive;
+    }
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)

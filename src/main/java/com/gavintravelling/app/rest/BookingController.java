@@ -53,6 +53,9 @@ public class BookingController {
         booking.setChildrenCount(bookingDetails.getChildrenCount());
         booking.setSmallChildrenCount(bookingDetails.getSmallChildrenCount());
         booking.setActiveBooking(bookingDetails.isActiveBooking());
+        booking.setHalfPension(bookingDetails.getHalfPension());
+        booking.setFullPension(bookingDetails.getFullPension());
+        booking.setAllInclusive(bookingDetails.getAllInclusive());
         final Booking updatedBooking = bookingRepository.save(booking);
         return ResponseEntity.ok(updatedBooking);
     }
