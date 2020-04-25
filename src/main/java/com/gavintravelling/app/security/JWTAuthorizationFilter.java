@@ -1,59 +1,82 @@
 package com.gavintravelling.app.security;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.gavintravelling.app.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-
-import static com.gavintravelling.app.security.SecurityConstants.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
+
+    private static final Logger log = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
 
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
-
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader(HEADER_STRING);
-
-        if (header == null || !header.startsWith(TOKEN_PREFIX)) {
-            chain.doFilter(request, response);
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                    FilterChain filterChain) throws IOException, ServletException {
+        var authentication = getAuthentication(request);
+        if (authentication == null) {
+            filterChain.doFilter(request, response);
             return;
         }
 
-        UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        chain.doFilter(request, response);
+        filterChain.doFilter(request, response);
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(HEADER_STRING);
-        if (token != null) {
-            // parse the token.
-            String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
-                    .build()
-                    .verify(token.replace(TOKEN_PREFIX, ""))
-                    .getSubject();
-            if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+        var token = request.getHeader(SecurityConstants.TOKEN_HEADER);
+        if (!StringUtils.isEmpty(token) && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+            try {
+                var signingKey = SecurityConstants.JWT_SECRET.getBytes();
+
+                var parsedToken = Jwts.parser()
+                        .setSigningKey(signingKey)
+                        .parseClaimsJws(token.replace("Bearer ", ""));
+
+                var username = parsedToken
+                        .getBody()
+                        .getSubject();
+
+                var authorities = ((List<?>) parsedToken.getBody()
+                        .get("rol")).stream()
+                        .map(authority -> new SimpleGrantedAuthority((String) authority))
+                        .collect(Collectors.toList());
+
+                if (!StringUtils.isEmpty(username)) {
+                    return new UsernamePasswordAuthenticationToken(username, null, authorities);
+                }
+            } catch (ExpiredJwtException exception) {
+                log.warn("Request to parse expired JWT : {} failed : {}", token, exception.getMessage());
+            } catch (UnsupportedJwtException exception) {
+                log.warn("Request to parse unsupported JWT : {} failed : {}", token, exception.getMessage());
+            } catch (MalformedJwtException exception) {
+                log.warn("Request to parse invalid JWT : {} failed : {}", token, exception.getMessage());
+            } catch (IllegalArgumentException exception) {
+                log.warn("Request to parse empty or null JWT : {} failed : {}", token, exception.getMessage());
             }
-            return null;
         }
+
         return null;
     }
 }
