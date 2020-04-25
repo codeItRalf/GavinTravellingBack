@@ -18,23 +18,7 @@ public class App {
 //        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 //    }
 
-    @Bean
-    public CorsFilter corsFilter() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowCredentials(true);
-        configuration.addAllowedOrigin("*");
-        configuration.addAllowedHeader("*");
-        configuration.addAllowedMethod("OPTIONS");
-        configuration.addAllowedMethod("HEAD");
-        configuration.addAllowedMethod("GET");
-        configuration.addAllowedMethod("PUT");
-        configuration.addAllowedMethod("POST");
-        configuration.addAllowedMethod("DELETE");
-        configuration.addAllowedMethod("PATCH");
-        source.registerCorsConfiguration("/**", configuration);
-        return new CorsFilter(source);
-    }
+
 
 @Bean
 public BCryptPasswordEncoder bCryptPasswordEncoder() {
