@@ -27,7 +27,7 @@ public class Customer  {
     private String password;
 
 
-
+    @JsonIgnore
     private String tokenId;
 
     @JsonIgnore
