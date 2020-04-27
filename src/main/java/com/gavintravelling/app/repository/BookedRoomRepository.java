@@ -18,5 +18,6 @@ public interface BookedRoomRepository extends JpaRepository<BookedRoom, BookedRo
             " (:endDate BETWEEN b.startDate AND b.endDate) OR(:startDate <= b.startDate AND :endDate >= b.endDate)")
      List<Long> getBookedRoomWithinDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
+    List<BookedRoom> findAllByBookingId(Long booking_id);
 // WHERE :startDate BETWEEN b.startDate AND b.endDate OR :endDate BETWEEN b.startDate AND b.endDate OR :startDate < b.startDate AND :endDate > b.endDate
 }
