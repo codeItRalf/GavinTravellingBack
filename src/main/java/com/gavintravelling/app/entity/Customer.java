@@ -25,9 +25,7 @@ public class Customer  {
     private String EMail;
     private String personNumber;
     private String password;
-
-
-    @JsonIgnore
+    
     private String tokenId;
 
     @JsonIgnore
