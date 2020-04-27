@@ -1,12 +1,7 @@
 package com.gavintravelling.app.rest;
 
-import com.gavintravelling.app.embeddedId.BookedRoomsId;
-import com.gavintravelling.app.entity.BookedRoom;
 import com.gavintravelling.app.entity.Booking;
-import com.gavintravelling.app.entity.Customer;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
-import com.gavintravelling.app.modelDto.BookingDto;
-import com.gavintravelling.app.modelDto.TokenId;
 import com.gavintravelling.app.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @RestController
