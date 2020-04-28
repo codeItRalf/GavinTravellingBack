@@ -2,6 +2,7 @@ package com.gavintravelling.app.rest;
 
 import com.gavintravelling.app.entity.Review;
 import com.gavintravelling.app.entity.Room;
+import com.gavintravelling.app.entity.RoomType;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
 import com.gavintravelling.app.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @RestController
@@ -30,6 +31,14 @@ public class RoomController {
     public ResponseEntity<Room> getRoomById(@PathVariable long id) throws ResourceNotFoundException {
         Room room = getEntity(id);
         return ResponseEntity.ok().body(room);
+    }
+
+    @GetMapping("/{startDate}/{endDate}/{hotelId}")
+    public List<Room> getRoomsByBookedDate(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String hotelId) throws ParseException {
+        Date sd = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+        Date ed = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+
+        return roomRepository.listAvailableRoomsBetweenDatesWithHotelId(sd, ed, Long.parseLong(hotelId));
     }
 
     @PostMapping

@@ -50,7 +50,7 @@ public class Customer  {
         this.lastName = "test";
         this.phoneNumber = "0739990855";
         this.EMail = email;
-        this.personNumber = "9999999";
+        this.personNumber = "9999998";
         this.password = password;
     }
 
