@@ -1,5 +1,6 @@
 package com.gavintravelling.app.rest;
 
+import com.gavintravelling.app.embeddedId.BookedRoomsId;
 import com.gavintravelling.app.entity.BookedRoom;
 import com.gavintravelling.app.entity.Booking;
 import com.gavintravelling.app.entity.Room;
@@ -55,13 +56,13 @@ public class BookingFormController {
 
         bookingForm.getRoomsToBook().forEach(room -> {
             BookedRoom br = new BookedRoom();
-            br.setBooking(b);
+            br.setId(new BookedRoomsId(booking.getId(), room.getRoomId()));
+            br.setBooking(booking);
             br.setStartDate(bookingForm.getStartDate());
             br.setEndDate(bookingForm.getEndDate());
             br.setExtraBed(room.getExtraBed());
             Optional<Room> tempRoom = roomRepository.findById(room.getRoomId());
             tempRoom.ifPresent(br::setRoom);
-            br.setBooking(booking);
             bookedRoomRepository.save(br);
         });
         return ResponseEntity.ok().body(bookingForm);

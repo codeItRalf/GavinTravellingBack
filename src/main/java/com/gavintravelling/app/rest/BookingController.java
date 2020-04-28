@@ -18,7 +18,7 @@ public class BookingController {
 
     @Autowired
     private BookingRepository bookingRepository;
-    
+
     @GetMapping
     public Iterable<Booking> getAllBookings(){
             return bookingRepository.findAll();
