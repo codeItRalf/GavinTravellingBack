@@ -17,8 +17,7 @@ public class RoomType {
     private String roomType;
     private double price;
 
-    @ManyToOne(optional = false,
-            cascade = CascadeType.REMOVE)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "hotel_id", referencedColumnName = "id")
     private Hotel hotel;
 

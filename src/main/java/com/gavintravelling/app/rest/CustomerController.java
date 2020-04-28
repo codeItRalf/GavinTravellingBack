@@ -48,7 +48,7 @@ public class CustomerController {
 
     @PostMapping("/user")
     public ResponseEntity<Customer> authCustomer(@Valid @RequestBody TokenId tokenId){
-        return ResponseEntity.ok(customerRepository.findByTokenId(tokenId.getToken()));
+        return ResponseEntity.ok(customerRepository.findByTokenId(tokenId.getTokenId()));
     }
 
 
