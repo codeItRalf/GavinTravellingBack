@@ -39,21 +39,22 @@ public List<Hotel> filter(@Valid @ModelAttribute("hotelForm")HotelForm hotelForm
     }
     List<Hotel> hotelResult = new ArrayList<>();
     var hotels = hotelRepository.getHotelsByDistanceToBeachIsLessThanEqualAndDistanceToCenterIsLessThanEqualAndCity_Name(
-            hotelForm.getDistBeach(),hotelForm.getDistCenter(),hotelForm.getCityName()).stream().filter(hotel -> {
-        if(hotelForm.isHaveChildrenClub()){
-            return hotel.isChildrenClub();
-        }
-        if(hotelForm.isHaveNightEntertain()){
-            return hotel.isNightEntertainment();
-        }
-        if(hotelForm.isHavePool()){
-            return hotel.isPool();
-        }
-        if(hotelForm.isHaveRestaurant()){
-            return hotel.isRestaurant();
-        }
-        return true;
-    }).collect(Collectors.toList());
+            hotelForm.getDistBeach(),hotelForm.getDistCenter(),hotelForm.getCityName());
+//    .stream().filter(hotel -> {
+//        if(hotelForm.isHaveChildrenClub()){
+//            return hotel.isChildrenClub();
+//        }
+//        if(hotelForm.isHaveNightEntertain()){
+//            return hotel.isNightEntertainment();
+//        }
+//        if(hotelForm.isHavePool()){
+//            return hotel.isPool();
+//        }
+//        if(hotelForm.isHaveRestaurant()){
+//            return hotel.isRestaurant();
+//        }
+//        return true;
+//    }).collect(Collectors.toList());
 
     var rooms = (List<Room>) roomRepository.getRoomsByRoomType_HotelIn(hotels);
     var bookedRoomsId = (List<Long>) bookedRoomRepository.getBookedRoomWithinDate(hotelForm.getStartDate(),hotelForm.getEndDate());
