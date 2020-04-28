@@ -1,13 +1,13 @@
 package com.gavintravelling.app.modelDto;
 
 public class TokenId {
-    private String token;
+    private String tokenId;
 
-    public String getToken() {
-        return token;
+    public String getTokenId() {
+        return tokenId;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setTokenId(String tokenId) {
+        this.tokenId = tokenId;
     }
 }

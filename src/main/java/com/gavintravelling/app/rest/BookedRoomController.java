@@ -73,7 +73,7 @@ public class BookedRoomController {
 
     @PostMapping("user")
     public List<BookedRoom> getAllBookingsByToken(@Valid @RequestBody TokenId tokenId){
-        return bookedRoomRepository.findAllByBookingCustomerTokenId(tokenId.getToken());
+        return bookedRoomRepository.findAllByBookingCustomerTokenId(tokenId.getTokenId());
     }
 
 
