@@ -19,13 +19,11 @@ public class BookedRoom implements Serializable {
     private BookedRoomsId id;
 
     @ManyToOne
-    @MapsId("roomId")
-    @JoinColumn(name = "booking_id")
+    @MapsId("bookingId")
     private Booking booking;
 
     @ManyToOne
-    @MapsId("bookingId")
-    @JoinColumn(name = "room_id")
+    @MapsId("roomId")
     private Room room;
 
 
