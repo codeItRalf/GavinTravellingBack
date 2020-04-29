@@ -1372,7 +1372,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:9090/rest/room-types",
+							"raw": "http://localhost:9090/rest/room-types/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1380,7 +1380,8 @@
 							"port": "9090",
 							"path": [
 								"rest",
-								"room-types"
+								"room-types",
+								""
 							]
 						},
 						"description": "Creating a new room type"
@@ -3049,7 +3050,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": {\r\n        \"bookingId\": {{LatestCreatedBookingID}},\r\n        \"roomId\": {{NewAddedRoom}}\r\n    },\r\n    \"booking\": {\r\n        \"id\": {{LatestCreatedBookingID}},\r\n        \"customer\": {\r\n        }\r\n    },\r\n    \"room\": {\r\n        \"id\": {{NewAddedRoom}}\r\n    },\r\n    \"extraBed\": 1,\r\n    \"startDate\": \"2020-06-19\",\r\n    \"endDate\": \"2020-06-25\"\r\n}",
+							"raw": "{\r\n    \"id\": {\r\n        \"bookingId\": {{LatestCreatedBookingID}},\r\n        \"roomId\": {{NewAddedRoom}}\r\n    },\r\n    \"booking\": {\r\n        \"id\": {{LatestCreatedBookingID}}\r\n    },\r\n    \"room\": {\r\n        \"id\": {{NewAddedRoom}}\r\n    },\r\n    \"extraBed\": 1,\r\n    \"startDate\": \"2020-06-19\",\r\n    \"endDate\": \"2020-06-25\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3602,7 +3603,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:9090/rest/booking/user",
+							"raw": "http://localhost:9090/rest/bookings/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -3610,7 +3611,7 @@
 							"port": "9090",
 							"path": [
 								"rest",
-								"booking",
+								"bookings",
 								"user"
 							]
 						},
@@ -3688,79 +3689,79 @@
 	],
 	"variable": [
 		{
-			"id": "1fa6ca05-2269-4962-beb1-5ab203d1a9ce",
+			"id": "98ad8def-ff0d-4f07-b3b3-0272046d88ec",
 			"key": "LatestCustomerID",
 			"value": null,
 			"type": "any"
 		},
 		{
-			"id": "657e6a5b-099f-4603-b65b-be09fd90520d",
+			"id": "bab48738-5652-4c61-8cfa-10bd70dcaf6d",
 			"key": "LatestCustomerEmail",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "eecb5408-c227-4fc0-b81e-276fef4f88e9",
+			"id": "c702fedf-f80f-4cdb-aeee-394c8f360999",
 			"key": "LatestAddedCityID",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "41d3d0e2-0f2e-441c-a650-23d6e58172b8",
+			"id": "b0547749-e476-4115-84e0-7fedd231603b",
 			"key": "LatestAddedCityName",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e1b7fe23-53fa-4240-bfcd-8d1e683c9802",
+			"id": "5cda0ca5-1826-49f0-97ad-258e1f5f16d4",
 			"key": "LatestAddedHotelD",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "1d479eef-70af-4244-8c51-148558c59c72",
+			"id": "c4f0380a-98f4-430c-b7f6-54d9cb79f094",
 			"key": "LatestAddedHotelEmail",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "feb40fdf-01b0-42ab-a43c-42477ce3e29a",
+			"id": "7642e127-a67b-4d5d-a9f6-cbd7cb773753",
 			"key": "LatestReviewID",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "25e3d150-c146-4209-b50f-18b20fbc29ad",
+			"id": "e4c31643-60b3-4fa7-9ca3-8bab6e2c7ba0",
 			"key": "LatestCreatedRoomTypeID",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "5b9e8075-fe11-4c51-b25a-9d5de1da9191",
+			"id": "8a23d283-f71f-4e80-8b0d-bb037b8eb969",
 			"key": "LatestCreatedBookingID",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e74db8b0-0f95-4df2-8a1f-80e23dbd7318",
+			"id": "da165cd0-cf42-443d-8926-6c6959f8745d",
 			"key": "LatestAddedReviewID",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f7a792a3-2537-48ce-982f-ea5b81f23e45",
+			"id": "6e20ace3-f4af-439e-a2a7-b374002f4830",
 			"key": "NewAddedRoom",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f40eec2d-17cf-405c-951b-4a2779a69181",
+			"id": "f74a5aea-ae75-4c82-ad42-0525b01c7460",
 			"key": "tokenXD",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "b3b3925b-75d1-4444-bca2-68c07bc6921b",
+			"id": "5d184f46-c5ec-4cbe-8c38-a79e7e441ccd",
 			"key": "LatestBookedRoom",
 			"value": "",
 			"type": "string"
