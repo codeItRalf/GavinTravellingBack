@@ -15,6 +15,7 @@ public class HotelDto extends Hotel {
     }
 
     public HotelDto(Hotel hotel, double bestPrice) {
+        setId(hotel.getId());
         setName(hotel.getName());
         setStars(hotel.getStars());
         setPicture(hotel.getPicture());

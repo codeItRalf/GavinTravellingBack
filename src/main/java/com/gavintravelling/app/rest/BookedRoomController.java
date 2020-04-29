@@ -35,6 +35,14 @@ public class BookedRoomController {
             return ResponseEntity.ok().body(bookedRoom);
     }
 
+    @GetMapping("/{bookingId}")
+    public ResponseEntity<List<BookedRoom>> getBookedRoomByBookingId(@PathVariable Long bookingId)
+            throws ResourceNotFoundException {
+        var bookedRooms = bookedRoomRepository.findAllByBookingId(bookingId);
+        return ResponseEntity.ok().body(bookedRooms);
+    }
+
+
     @PostMapping
     public BookedRoom createBookedRoom(@Valid @RequestBody BookedRoom bookedRoom){
      return bookedRoomRepository.save(bookedRoom);
