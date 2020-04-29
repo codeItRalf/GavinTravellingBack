@@ -77,13 +77,6 @@ public class BookedRoomController {
 
     }
 
-
-    @PostMapping("user")
-    public List<BookedRoom> getAllBookingsByToken(@Valid @RequestBody TokenId tokenId){
-        return bookedRoomRepository.findAllByBookingCustomerTokenId(tokenId.getTokenId());
-    }
-
-
     private BookedRoom getEntity(Long bookingId, Long roomId) throws ResourceNotFoundException {
               return bookedRoomRepository.findById(new BookedRoomsId(bookingId, roomId))
                     .orElseThrow(() -> new ResourceNotFoundException("Booked room not found for this id :: booking_id:" + bookingId + ", room_id: " + roomId));
