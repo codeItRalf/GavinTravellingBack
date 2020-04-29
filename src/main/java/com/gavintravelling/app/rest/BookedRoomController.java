@@ -60,7 +60,6 @@ public class BookedRoomController {
         return ResponseEntity.ok(updatedBookedRoom);
     }
 
-
     @DeleteMapping("/all")
     public void deleteAllBookedRooms(){
       bookedRoomRepository.deleteAll();

@@ -1,7 +1,9 @@
 package com.gavintravelling.app.rest;
 
 import com.gavintravelling.app.entity.Booking;
+import com.gavintravelling.app.entity.RoomType;
 import com.gavintravelling.app.exceptionHandling.exeption.ResourceNotFoundException;
+import com.gavintravelling.app.modelDto.TokenId;
 import com.gavintravelling.app.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -29,6 +32,11 @@ public class BookingController {
        throws ResourceNotFoundException {
             Booking booking = getEntity(id);
             return ResponseEntity.ok().body(booking);
+    }
+
+    @PostMapping(value = "by-token-id")
+    public List<Booking> getBookingByTokenId(@Valid @RequestBody TokenId tokenId){
+        return bookingRepository.getBookingByTokenId(tokenId.getTokenId());
     }
 
     @PostMapping

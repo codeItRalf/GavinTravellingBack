@@ -54,7 +54,6 @@ public class Booking {
    private Review review;
 
     @OneToMany(mappedBy = "booking")
-    @JsonIgnore
     private Set<BookedRoom> rooms;
 
 

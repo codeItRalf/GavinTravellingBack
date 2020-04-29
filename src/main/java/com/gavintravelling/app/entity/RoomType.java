@@ -19,6 +19,7 @@ public class RoomType {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "hotel_id", referencedColumnName = "id")
+    @JsonIgnore
     private Hotel hotel;
 
     @JsonIgnore
