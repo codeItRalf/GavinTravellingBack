@@ -18,6 +18,16 @@ public class BookingForm {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private List<RoomDto> roomsToBook;
+    private double totalPrice;
+
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public List<RoomDto> getRoomsToBook() {
         return roomsToBook;

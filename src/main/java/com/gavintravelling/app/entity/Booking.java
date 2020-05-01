@@ -20,6 +20,7 @@ public class Booking {
     private int fullPension;
     private int halfPension;
     private int allInclusive;
+    private double totalPrice;
 
     public int getFullPension() {
         return fullPension;
@@ -44,6 +45,8 @@ public class Booking {
     public void setAllInclusive(int allInclusive) {
         this.allInclusive = allInclusive;
     }
+
+
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
@@ -120,5 +123,13 @@ public class Booking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

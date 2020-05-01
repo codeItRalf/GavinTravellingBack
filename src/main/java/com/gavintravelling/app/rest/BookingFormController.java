@@ -52,6 +52,7 @@ public class BookingFormController {
         b.setFullPension(bookingForm.getFullPension());
         b.setAllInclusive(bookingForm.getAllInclusive());
         b.setCustomer(customer);
+        b.setTotalPrice(bookingForm.getTotalPrice());
         Booking booking = bookingRepository.save(b);
 
         bookingForm.getRoomsToBook().forEach(room -> {
