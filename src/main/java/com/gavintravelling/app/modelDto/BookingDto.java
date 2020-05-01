@@ -11,6 +11,15 @@ public class BookingDto {
     private String cityName;
     private boolean active;
     private Set<BookedRoom> bookedRoomList;
+    private double totalPrice;
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public Long getHotelId() {
         return hotelId;

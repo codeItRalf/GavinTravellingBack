@@ -18,7 +18,7 @@ public class BookingForm {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private List<RoomDto> roomsToBook;
-    private double totalPrice;
+    private Double totalPrice;
 
 
     public double getTotalPrice() {
