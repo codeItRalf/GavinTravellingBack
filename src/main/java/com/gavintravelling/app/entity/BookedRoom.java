@@ -1,6 +1,7 @@
 package com.gavintravelling.app.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gavintravelling.app.embeddedId.BookedRoomsId;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,13 +20,13 @@ public class BookedRoom implements Serializable {
     private BookedRoomsId id;
 
     @ManyToOne
-    @MapsId("roomId")
-    @JoinColumn(name = "booking_id")
+    @MapsId("bookingId")
+    @JsonIgnore
     private Booking booking;
 
     @ManyToOne
-    @MapsId("bookingId")
-    @JoinColumn(name = "room_id")
+    @MapsId("roomId")
+    @JsonIgnore
     private Room room;
 
 

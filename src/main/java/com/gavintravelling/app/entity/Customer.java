@@ -4,13 +4,17 @@ package com.gavintravelling.app.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customer  {
 
     private  @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY ) Long id;
 
@@ -21,6 +25,8 @@ public class Customer {
     private String EMail;
     private String personNumber;
     private String password;
+    
+    private String tokenId;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer",
@@ -44,7 +50,7 @@ public class Customer {
         this.lastName = "test";
         this.phoneNumber = "0739990855";
         this.EMail = email;
-        this.personNumber = "9999999";
+        this.personNumber = "9999998";
         this.password = password;
     }
 
@@ -75,7 +81,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEMail() {
+    public String geteEMail() {
         return EMail;
     }
 
@@ -91,10 +97,12 @@ public class Customer {
         this.personNumber = personNumber;
     }
 
+
     @JsonIgnore
     public String getPassword() {
         return password;
     }
+
 
     @JsonProperty
     public void setPassword(String password) {
@@ -109,12 +117,20 @@ public class Customer {
         this.id = id;
     }
 
-    public void setEMail(String EMail) {
+    public void seteMail(String EMail) {
         this.EMail = EMail;
     }
 
     public Set<Booking> getBookings() {
         return bookings;
+    }
+
+    public String getTokenId() {
+        return tokenId;
+    }
+
+    public void setTokenId(String tokenId) {
+        this.tokenId = tokenId;
     }
 
     public void setBookings(Set<Booking> bookings) {
