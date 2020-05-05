@@ -12,11 +12,13 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 public class App {
 
-// Behövs kanske för Ida
-//    @PostConstruct
-//    void started(){
-//        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-//    }
+
+
+
+@Bean
+public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    return new BCryptPasswordEncoder();
+}
 
 
 

@@ -54,6 +54,7 @@ public class BookingController {
                     bookingDto.setHotelName(hotel.getName());
                     bookingDto.setActive(booking.isActiveBooking());
                     bookingDto.setBookedRoomList(booking.getRooms());
+                    bookingDto.setTotalPrice(booking.getTotalPrice());
                     return bookingDto;
                 }).collect(Collectors.toList());
     }
