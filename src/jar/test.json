@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "16a0f00e-303c-4d5c-8dd7-d62b02cd44a1",
+		"_postman_id": "eacab2d5-3475-48b7-9c18-4dff2bee65d8",
 		"name": "Gavin Travelling (new)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "07920f67-b6d1-461b-a6ae-f551756fd2b9",
+								"id": "d8c7b7a7-523d-46f2-a875-e47e8c303de8",
 								"exec": [
 									"pm.test(\"To be an array\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -85,7 +85,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4ee5ae73-04d7-40c3-9fa9-86ab4f55ae57",
+								"id": "32e6201e-5a67-4068-84e7-1a8a6ff7bac6",
 								"exec": [
 									"pm.test(\"A customer is not an array, it's an object\", function () {",
 									"    var jsonData = pm.response.json();",
@@ -157,7 +157,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d71b4599-2db9-4b26-978f-a2793dc51731",
+								"id": "a4af6608-259b-4874-a759-c2a10dc5f0e1",
 								"exec": [
 									"pm.test(\"A customer should have all the parameters id,firstName, lastName, phoneNumber, personNumber, eMail, tokenId\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
@@ -222,7 +222,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "141d9354-9746-4873-b9b1-7ce58d213d85",
+								"id": "49e2d290-278b-411d-ad4c-801cc2560296",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -289,7 +289,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f400bcc5-0572-4b52-b13c-c126dcd5b677",
+						"id": "5bc34ca9-fa17-44cc-ae43-df3ed7da6239",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -299,7 +299,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "511c5195-c21f-473c-91dc-a38b364978f1",
+						"id": "53a72e58-1e41-45aa-8a1e-546b63ce2982",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -318,7 +318,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "47e269f1-ca67-48a0-be28-79c400aa8568",
+								"id": "63da14e4-b766-4c84-a392-1510547b5f86",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -391,7 +391,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "88edf32d-3fb7-443c-bf0f-e1f332ad71a7",
+								"id": "7ed66943-dfce-4930-aba5-64bbfab40afe",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -466,7 +466,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "73abfdd8-795d-44a8-a338-2638ef9dd402",
+								"id": "d3d2b232-7b3b-4606-ae86-d35727d3bda7",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -541,7 +541,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2bc3b66d-e9f2-434a-a0af-2c015f91707a",
+								"id": "dcdef6a1-58fc-42af-9aee-74d408e5e1bb",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -625,7 +625,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8c9f10bf-d6c0-4913-aec9-3811d3efced9",
+								"id": "a37e2a44-2288-4174-870c-8459450bc3d0",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -696,7 +696,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6d58bbc4-69b2-4b6c-8d63-297bb5aa457f",
+								"id": "9d68aec3-a2a8-48ab-adc0-0255ded592e1",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -773,7 +773,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "801d1836-9fdd-476f-8672-f04c04981ee3",
+								"id": "865cf0ba-1a97-4ce6-8040-2a3304b35f47",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -842,12 +842,12 @@
 					"response": []
 				},
 				{
-					"name": "PUT - Edit hotel data  ✅",
+					"name": "PUT - Edit hotel ✅",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "578c6c28-bed8-428b-8574-bca6ed998481",
+								"id": "1a02593f-aa50-4bbd-84f4-29df33a0215c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -918,7 +918,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "c6a972a9-b6df-4725-82d6-595da79538c7",
+						"id": "184fb218-cd3b-4dac-85de-af76add24008",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -928,7 +928,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c88ab575-d10a-4767-8536-674a54c7fee4",
+						"id": "3fc65d66-5e17-41f7-a0d9-29dbef151234",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -947,7 +947,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "97f71003-97b0-4e10-ae9c-c80375604a34",
+								"id": "7bc8742e-728e-4ba8-a143-24fcaebf59c2",
 								"exec": [
 									"",
 									"pm.test(\"Response is an array of room types\", function () {",
@@ -1128,12 +1128,12 @@
 					]
 				},
 				{
-					"name": "GET - A specific roomtype✅",
+					"name": "GET - A specific room type✅",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "360b2fe3-f446-49bf-af06-1dcef75b9436",
+								"id": "431e7e2d-4a81-494e-8b89-8422d3289249",
 								"exec": [
 									"",
 									"pm.test(\"Response is not an array of room types, it's an object\", function () {",
@@ -1321,7 +1321,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3fd97fb1-f6bb-4634-a9c4-f3ff2d91a8a3",
+								"id": "9b53855f-c7ca-4d47-bbb8-fcb2ef1a15cf",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1394,7 +1394,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c65fd07a-bbcf-4a8d-ad5f-5fcda22d0081",
+								"id": "75f0c09f-113e-42c8-8f3b-2846e919bd04",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1460,7 +1460,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "c74ed479-8831-4f30-b894-ca58b532b1c3",
+						"id": "b6312d6f-d84b-4d41-ac1e-e7971a116a0d",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1470,7 +1470,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "88ee9e37-6c18-481a-83c1-88514e641fe2",
+						"id": "1baf4ed1-db1a-49dc-9fd8-2a448b717537",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1489,7 +1489,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fcc5a702-55fd-4a54-8517-9448f9098541",
+								"id": "7cb0ea37-3067-475c-99f6-a434925abfc2",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1619,7 +1619,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f39351d3-57d6-4f3e-8f3c-b706c7c38315",
+								"id": "44cbadd5-9498-402c-811c-b1d7658d6ade",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1755,7 +1755,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bf32aeac-fcd1-4c21-875d-47de9d3df75d",
+								"id": "15baca70-bfdf-45e0-b0a9-8c2846fa84eb",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1883,7 +1883,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "214a02e6-c816-4375-a9d6-bc0cb7da12d1",
+								"id": "c539d397-8502-4d61-aa0e-53843f0da6dd",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2018,7 +2018,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c4721db3-23ff-464a-847b-aa3fed72e136",
+								"id": "bc134cc7-bdae-4752-b2dd-21b968d14e1b",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2089,7 +2089,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "aedeb788-9fe5-447c-91af-fdec35c90484",
+								"id": "14141820-ec7d-475a-84b0-7053d045ef77",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2152,7 +2152,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bbb669f2-cbaf-4b01-b2a2-3fd97e629c47",
+								"id": "95766c11-0fc3-4708-b07b-3c64431d06a4",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2223,7 +2223,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0318e893-6041-4048-bb73-fea61ab617cb",
+								"id": "0ee665fa-9257-4a64-9f65-87e79bdc090d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2289,7 +2289,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0027549e-8bce-484a-8b90-35c2ef22e4bb",
+						"id": "62b12c3e-74a8-43bd-ba13-56d76645c26f",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2299,7 +2299,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "95d41ef3-0fed-4ec2-ba41-ee170f842186",
+						"id": "f6303e4b-c731-48f8-99cf-905e06b00309",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2318,7 +2318,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "40cd5395-11f4-4387-8070-1e965da7921b",
+								"id": "f0d93bf7-94ee-40b0-8f2d-0446e2ef56f0",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2451,7 +2451,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5edaf7b1-7341-4a9e-a962-f0d280c47897",
+								"id": "df8bbe16-1fa4-4f60-b25b-48c3ded613bc",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2585,7 +2585,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8955d13a-bb76-4e7c-9706-2720beab8f84",
+								"id": "e8124213-525b-45fc-b54e-c07b77d0cd06",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2706,7 +2706,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "901030f5-5207-4f38-865a-1348c14cd847",
+								"id": "0fe28c89-de16-4081-bc31-e21a63bcdd72",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2837,7 +2837,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b07242e4-a5db-4411-8bb3-e7b53ce4a0f1",
+								"id": "ae720257-6813-422b-b2cb-9671c512f11d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2948,7 +2948,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7bdcf9d6-82ba-42bf-8cf6-2f60ec2b7015",
+								"id": "13ab1e6b-f75d-4290-a5ac-5c3436a0735c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3013,7 +3013,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ffa8a2cb-42ab-4e5c-be11-ce95fb77ac27",
+						"id": "86324380-5b64-435e-85f6-9036749b08a8",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3023,7 +3023,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c2175487-b4ac-4e34-8a83-e3662e076365",
+						"id": "c773fc3c-ebc0-42c9-be8e-c21483d0bf35",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3042,7 +3042,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9148e642-df90-458a-af5d-aeeaa1553545",
+								"id": "bb051639-47bf-41d5-a167-9f604ca571de",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3094,7 +3094,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "83139216-a34b-4ba6-a6bb-5d8aa3c255e9",
+								"id": "55abcaae-edf2-4b16-b3f5-b1db65906551",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3146,7 +3146,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d49128c2-885d-4281-b2d5-9b0d3e38a776",
+								"id": "ca48cc37-d402-4d2b-8f79-6447bb737a63",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3198,7 +3198,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fe8c886e-d088-46cf-a097-448d3a6d1487",
+								"id": "4e956c41-7eef-4237-8c97-c72ba5d88473",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3250,7 +3250,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f89cf79a-1f57-45f7-84ff-e74b17790480",
+								"id": "a0142d27-5f22-4b6b-b085-99f4b113c6ff",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3295,7 +3295,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e9ac603b-b2f7-4439-ae06-fd97e11b3aae",
+						"id": "858ee535-9eec-4ee5-896f-1c6c74f8f0ef",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3305,7 +3305,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b8da51e2-a101-4141-a9ab-30bcf860e4b0",
+						"id": "c4835ede-d306-4975-b07c-3a39491a3167",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3324,7 +3324,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "07e2be94-326e-4caf-8756-27c61e886d29",
+								"id": "4290e6c3-b26c-4ab1-b0b8-bafe4cef2c43",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3391,7 +3391,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f2e00b44-0fd7-44c9-8923-1941c0398243",
+								"id": "1a0f5c5c-ce24-4e4b-a333-52f90b2bb0cf",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3470,7 +3470,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ba297e3d-add7-4044-9361-d25d0be0a1b3",
+						"id": "4c93ac0f-7ccb-4b4f-9fff-9014068ab330",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3480,7 +3480,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4cae3b88-79a6-48e1-890e-91322342591e",
+						"id": "d77ff5b3-e688-4070-b939-0048ddf842b1",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3495,7 +3495,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "fd6d9c6a-19c2-4b3c-bd06-290898a9e092",
+				"id": "b11be9bc-b1ae-4017-b384-bf4aab187148",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3505,7 +3505,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a7c202e5-eb78-4c5a-94e5-bc4838af9442",
+				"id": "d0c55a5e-6643-4fdd-9e74-808e24a079d2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3515,82 +3515,82 @@
 	],
 	"variable": [
 		{
-			"id": "7e2b4255-2537-4bdf-8b0c-4431f0a463da",
+			"id": "f78d3c7f-b5bb-4a97-83c2-d931f3e079ad",
 			"key": "LatestCustomerID",
-			"value": 47,
-			"type": "number"
+			"value": null,
+			"type": "any"
 		},
 		{
-			"id": "cdbf17d5-a3c0-4cdc-9977-f0f763bc271a",
+			"id": "ac704c5f-99ec-4e57-89fc-1440c52ab82e",
 			"key": "LatestCustomerEmail",
-			"value": "Ulices46@hotmail.com",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "a7e79903-2113-4d33-a77d-3095ed727cb9",
+			"id": "83cfb29b-d53e-4a5e-95ce-661ea7165eff",
 			"key": "LatestAddedCityID",
-			"value": 32,
-			"type": "number"
+			"value": "",
+			"type": "string"
 		},
 		{
-			"id": "9d35e91f-8789-49a5-a184-dd82ae7dbf43",
+			"id": "abfa80d0-3e10-4974-be60-cfd8f53648e5",
 			"key": "LatestAddedCityName",
-			"value": "DEVCITY",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2e163dbb-fc6c-419c-86ae-5dd1b5a668d9",
+			"id": "2da75747-b889-43d2-bfa3-61b38d8fb272",
 			"key": "LatestAddedHotelD",
-			"value": 112,
-			"type": "number"
-		},
-		{
-			"id": "64fa2a43-67e8-4541-b5b3-aae70771e838",
-			"key": "LatestAddedHotelEmail",
-			"value": "TESTHOTEL@TESTHOTEL.com",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "45559cc0-301d-488a-af7d-c3671cde3fe7",
+			"id": "0ebd0053-6b22-4458-945b-f4b09a41d8e7",
+			"key": "LatestAddedHotelEmail",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "0e1f2cbe-46d5-4ebb-85df-71b1be88dcdc",
 			"key": "LatestReviewID",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "4c72bd9e-d676-4db3-982d-b025418b3c27",
+			"id": "5b1aa014-e625-4c38-abcf-72dae8bb9eb2",
 			"key": "LatestCreatedRoomTypeID",
-			"value": 373,
-			"type": "number"
-		},
-		{
-			"id": "bb119082-ba0f-42f0-94c7-39a0f9b3016b",
-			"key": "LatestCreatedBookingID",
-			"value": 36,
-			"type": "number"
-		},
-		{
-			"id": "eda82a47-eeda-4b13-9747-69cc7a5b09a4",
-			"key": "LatestAddedReviewID",
-			"value": 32,
-			"type": "number"
-		},
-		{
-			"id": "e03c91b4-35a7-4fc4-a430-a246c156fe7f",
-			"key": "NewAddedRoom",
-			"value": 5013,
-			"type": "number"
-		},
-		{
-			"id": "4eb3715d-9163-4871-8e15-969a82cdf1c5",
-			"key": "tokenXD",
-			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRlc3RAbWFpbC5jb20iLCJleHAiOjE1ODkwNDIxMjcsInJvbCI6W119._RvMfIT7UinsmEb8xPMH-GmYqguSRN5HUGeGAAo_Yu_LLTpcBUclT32zZbuoGTapJuztO161wuebbTMkzULYvA",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "d1a7877c-0a1c-4ab4-853e-9b7cf1968f78",
+			"id": "d8fd7ec6-0864-489a-9be9-93b432c80fff",
+			"key": "LatestCreatedBookingID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "312f7843-ab36-46e0-b06c-0aff3e00f5a3",
+			"key": "LatestAddedReviewID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "2cabf254-9dbe-42ec-a89e-4845f252ad5a",
+			"key": "NewAddedRoom",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "c9272bd8-6360-42c2-98fe-55281d442de0",
+			"key": "tokenXD",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "754e87c9-2cf5-45e8-aaa7-866470a8d3cc",
 			"key": "LatestBookedRoom",
-			"value": null,
-			"type": "any"
+			"value": "",
+			"type": "string"
 		}
 	],
 	"protocolProfileBehavior": {}
